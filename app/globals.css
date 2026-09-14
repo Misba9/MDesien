@@ -1,0 +1,107 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-bronze: var(--bronze);
+  --color-espresso: var(--espresso);
+  --color-ivory: var(--ivory);
+  --color-sand: var(--sand);
+  --color-white: var(--white);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
+
+  --radius-sm: 0px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 4px;
+}
+
+:root {
+  color-scheme: light;
+
+  --bronze: #8c5a32;
+  --espresso: #241c16;
+  --ivory: #f2ede4;
+  --sand: #e5ded2;
+  --white: #ffffff;
+
+  --background: var(--ivory);
+  --foreground: var(--espresso);
+
+  --card: var(--white);
+  --card-foreground: var(--espresso);
+  --primary: var(--bronze);
+  --primary-foreground: var(--ivory);
+  --secondary: var(--sand);
+  --secondary-foreground: var(--espresso);
+  --muted: var(--sand);
+  --muted-foreground: #6b5d4f;
+  --accent: var(--bronze);
+  --accent-foreground: var(--ivory);
+  --border: #d8cfc0;
+  --input: #d8cfc0;
+  --ring: var(--bronze);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: 'kern' 1, 'liga' 1;
+  }
+  ::selection {
+    background: var(--bronze);
+    color: var(--ivory);
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+  /* Thin editorial rule */
+  .hairline {
+    border-color: var(--border);
+  }
+  /* Custom cursor hides native cursor on capable pointer devices */
+  @media (hover: hover) and (pointer: fine) {
+    .cursor-none-desktop,
+    .cursor-none-desktop * {
+      cursor: none;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -2,18 +2,14 @@ import type { Metadata } from 'next'
 import { PageIntro } from '@/components/page-intro'
 import { Reveal } from '@/components/reveal'
 import { ContactForm } from '@/components/contact/contact-form'
+import { email, phones, studioAddress } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Start a conversation with M Design about your architecture or interior project.',
+    'Start a project with M Desien in Madhapur, Hyderabad. Email info@mdesien.com or call +91 9811769424.',
+  alternates: { canonical: '/contact' },
 }
-
-const studios = [
-  { city: 'Mumbai', lines: ['Design House, Kala Ghoda', 'Mumbai 400001'] },
-  { city: 'Pune', lines: ['Lane 5, Koregaon Park', 'Pune 411001'] },
-  { city: 'Goa', lines: ['Fontainhas, Panaji', 'Goa 403001'] },
-]
 
 export default function ContactPage() {
   return (
@@ -21,7 +17,7 @@ export default function ContactPage() {
       <PageIntro
         eyebrow="Contact"
         title="Start a conversation."
-        description="Tell us about your site, your brief and how you hope to live or work. We take on a small number of projects each year."
+        description="Tell us about your site, your brief and how you hope to live or work."
       />
 
       <section className="mx-auto max-w-7xl px-6 pb-24 md:px-10 md:pb-36">
@@ -37,36 +33,38 @@ export default function ContactPage() {
                   Enquiries
                 </h2>
                 <a
-                  href="mailto:studio@mdesign.studio"
+                  href={email.href}
                   className="mt-3 block font-serif text-2xl text-espresso transition-colors hover:text-bronze"
                 >
-                  studio@mdesign.studio
+                  {email.display}
                 </a>
                 <a
-                  href="tel:+912200000000"
+                  href={phones[0].href}
+                  className="mt-3 block text-sm text-espresso"
+                >
+                  {phones[0].display}
+                </a>
+                <a
+                  href={phones[1].href}
                   className="mt-1 block text-sm text-muted-foreground"
                 >
-                  +91 22 0000 0000
+                  {phones[1].display}
                 </a>
               </div>
             </Reveal>
 
-            <div className="mt-10 grid gap-8">
-              {studios.map((s, i) => (
-                <Reveal key={s.city} delay={i * 0.08}>
-                  <div className="border-t border-border pt-6">
-                    <h3 className="font-serif text-xl text-espresso">
-                      {s.city}
-                    </h3>
-                    {s.lines.map((line) => (
-                      <p key={line} className="mt-1 text-sm text-muted-foreground">
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                </Reveal>
-              ))}
-            </div>
+            <Reveal delay={0.08}>
+              <div className="mt-10 border-t border-border pt-6">
+                <h2 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+                  {studioAddress.heading}
+                </h2>
+                {studioAddress.lines.map((line) => (
+                  <p key={line} className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    {line}
+                  </p>
+                ))}
+              </div>
+            </Reveal>
           </aside>
         </div>
       </section>

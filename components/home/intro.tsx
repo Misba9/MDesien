@@ -14,17 +14,15 @@ export function Intro() {
         <div className="md:col-span-8">
           <Reveal>
             <p className="font-serif text-3xl font-light leading-[1.25] text-espresso text-balance md:text-4xl lg:text-5xl">
-              We are a small studio with a simple conviction — that architecture
-              should feel inevitable. Every project begins with the specific: a
-              site, a light, a way of living.
+              M Desien is an architecture and interior design studio based in
+              Madhapur, Hyderabad.
             </p>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground">
-              From private residences to hospitality and workplace, our work is
-              united not by a style but by a discipline of restraint. We design
-              with materials that age gracefully and details that reward a second
-              look.
+              Led by Manisha, an architect and interior designer with 15+ years
+              of experience across residential, corporate and hospitality
+              projects.
             </p>
           </Reveal>
         </div>

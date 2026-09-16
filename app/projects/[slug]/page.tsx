@@ -23,6 +23,7 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.summary,
+    alternates: { canonical: `/projects/${project.slug}` },
     openGraph: { title: project.title, images: [project.image] },
   }
 }
@@ -37,7 +38,7 @@ export default async function ProjectPage({
   if (!project) notFound()
 
   const index = projects.findIndex((p) => p.slug === slug)
-  const next = projects[(index + 1) % projects.length]
+  const next = projects.length > 1 ? projects[(index + 1) % projects.length] : null
   const massing = getMassing(slug)
 
   const meta = [
@@ -133,29 +134,31 @@ export default async function ProjectPage({
         <ProjectGallery images={project.gallery} title={project.title} />
       </section>
 
-      <section className="border-t border-border">
-        <Link
-          href={`/projects/${next.slug}`}
-          className="group relative block h-[50svh] min-h-[360px] overflow-hidden"
-        >
-          <Image
-            src={next.image || '/placeholder.svg'}
-            alt={next.title}
-            fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-            sizes="100vw"
-          />
-          <div className="absolute inset-0 bg-espresso/50 transition-colors group-hover:bg-espresso/40" />
-          <div className="absolute inset-0 mx-auto flex max-w-7xl flex-col items-start justify-center px-6 md:px-10">
-            <p className="mb-3 text-xs uppercase tracking-[0.3em] text-ivory/80">
-              Next project
-            </p>
-            <span className="font-serif text-4xl font-light text-ivory md:text-6xl">
-              {next.title}
-            </span>
-          </div>
-        </Link>
-      </section>
+      {next && (
+        <section className="border-t border-border">
+          <Link
+            href={`/projects/${next.slug}`}
+            className="group relative block h-[50svh] min-h-[360px] overflow-hidden"
+          >
+            <Image
+              src={next.image || '/placeholder.svg'}
+              alt={next.title}
+              fill
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              sizes="100vw"
+            />
+            <div className="absolute inset-0 bg-espresso/50 transition-colors group-hover:bg-espresso/40" />
+            <div className="absolute inset-0 mx-auto flex max-w-7xl flex-col items-start justify-center px-6 md:px-10">
+              <p className="mb-3 text-xs uppercase tracking-[0.3em] text-ivory/80">
+                Next project
+              </p>
+              <span className="font-serif text-4xl font-light text-ivory md:text-6xl">
+                {next.title}
+              </span>
+            </div>
+          </Link>
+        </section>
+      )}
     </article>
   )
 }

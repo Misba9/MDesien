@@ -7,6 +7,25 @@ const nextConfig = {
     unoptimized: true,
   },
   devIndicators: false,
+  async redirects() {
+    return [
+      {
+        source: '/journal',
+        destination: '/insights',
+        permanent: true,
+      },
+      {
+        source: '/journal/:slug',
+        destination: '/insights/:slug',
+        permanent: true,
+      },
+      {
+        source: '/studio',
+        destination: '/about',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

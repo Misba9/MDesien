@@ -1,9 +1,18 @@
 'use client'
 
 import { useState, type FormEvent } from 'react'
+import { services as studioServices } from '@/lib/services'
 
+const projectTypes = ['Residential', 'Corporate', 'Hospitality', 'Other']
+
+const serviceOptions = studioServices.map((s) => s.title)
+
+/**
+ * Budget brackets were not in the source brief.
+ * Confirm with M Desien before treating these as official typical project sizes.
+ * Field remains optional.
+ */
 const budgets = ['Under ₹1 Cr', '₹1–3 Cr', '₹3–8 Cr', '₹8 Cr +']
-const services = ['Architecture', 'Interior Design', 'Master Planning', 'Other']
 
 export function ContactForm() {
   const [sent, setSent] = useState(false)
@@ -46,48 +55,59 @@ export function ContactForm() {
 
       <fieldset>
         <legend className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Service
+          Project Type
         </legend>
         <div className="flex flex-wrap gap-3">
-          {services.map((s) => (
-            <label
-              key={s}
-              className="cursor-pointer border border-border px-4 py-2 text-sm text-foreground/80 transition-colors has-[:checked]:border-bronze has-[:checked]:bg-bronze has-[:checked]:text-ivory"
-            >
-              <input type="radio" name="service" value={s} className="sr-only" />
-              {s}
-            </label>
+          {projectTypes.map((s) => (
+            <Chip key={s} name="projectType" value={s} />
           ))}
         </div>
       </fieldset>
 
       <fieldset>
         <legend className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Budget
+          Service
+        </legend>
+        <div className="flex flex-wrap gap-3">
+          {serviceOptions.map((s) => (
+            <Chip key={s} name="service" value={s} />
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend className="mb-4 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Budget <span className="normal-case tracking-normal">(optional)</span>
         </legend>
         <div className="flex flex-wrap gap-3">
           {budgets.map((b) => (
-            <label
-              key={b}
-              className="cursor-pointer border border-border px-4 py-2 text-sm text-foreground/80 transition-colors has-[:checked]:border-bronze has-[:checked]:bg-bronze has-[:checked]:text-ivory"
-            >
-              <input type="radio" name="budget" value={b} className="sr-only" />
-              {b}
-            </label>
+            <Chip key={b} name="budget" value={b} />
           ))}
         </div>
       </fieldset>
 
       <label className="flex flex-col gap-3">
         <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Tell us about your project
+          Requirement
+        </span>
+        <textarea
+          name="requirement"
+          rows={4}
+          required
+          className="resize-none border-b border-border bg-transparent py-3 text-lg text-espresso outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-bronze"
+          placeholder="What do you need from the studio?"
+        />
+      </label>
+
+      <label className="flex flex-col gap-3">
+        <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Message
         </span>
         <textarea
           name="message"
           rows={5}
-          required
           className="resize-none border-b border-border bg-transparent py-3 text-lg text-espresso outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-bronze"
-          placeholder="A few lines about the site, brief and timeline…"
+          placeholder="Anything else about the site, brief or timeline…"
         />
       </label>
 
@@ -101,6 +121,15 @@ export function ContactForm() {
         </span>
       </button>
     </form>
+  )
+}
+
+function Chip({ name, value }: { name: string; value: string }) {
+  return (
+    <label className="cursor-pointer border border-border px-4 py-2 text-sm text-foreground/80 transition-colors has-[:checked]:border-bronze has-[:checked]:bg-bronze has-[:checked]:text-ivory">
+      <input type="radio" name={name} value={value} className="sr-only" />
+      {value}
+    </label>
   )
 }
 

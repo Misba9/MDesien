@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { DualCta } from '@/components/dual-cta'
 
 export function Hero() {
   return (
@@ -20,40 +20,38 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 md:px-10 md:pb-24">
-        <motion.p
+        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mb-6 text-xs uppercase tracking-[0.3em] text-ivory/80"
         >
-          Architecture &amp; Interior Studio
-        </motion.p>
-        <motion.h1
+          Architecture &amp; Interior Design Studio in Hyderabad
+        </motion.h1>
+        <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl font-serif text-5xl font-light leading-[0.98] text-ivory text-balance md:text-7xl lg:text-8xl"
         >
-          Spaces where light, material and proportion meet.
-        </motion.h1>
+          Creating spaces that feel like you.
+        </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-6 max-w-xl text-base leading-relaxed text-ivory/85 md:text-lg"
+        >
+          Architecture and interior design shaped around people, purpose and
+          possibility.
+        </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center"
+          className="mt-10"
         >
-          <Link
-            href="/projects"
-            className="group inline-flex items-center gap-3 border border-ivory/40 px-8 py-4 text-xs uppercase tracking-[0.2em] text-ivory transition-colors hover:bg-ivory hover:text-espresso"
-          >
-            View Projects
-            <span className="transition-transform group-hover:translate-x-1" aria-hidden>
-              &rarr;
-            </span>
-          </Link>
-          <p className="max-w-xs text-sm leading-relaxed text-ivory/80">
-            M Design crafts warm, considered buildings and interiors across India.
-          </p>
+          <DualCta variant="light" />
         </motion.div>
       </div>
 

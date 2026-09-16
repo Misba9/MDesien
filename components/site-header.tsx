@@ -3,13 +3,8 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
-
-const links = [
-  { href: '/projects', label: 'Projects' },
-  { href: '/about', label: 'Studio' },
-  { href: '/journal', label: 'Journal' },
-  { href: '/contact', label: 'Contact' },
-]
+import { LogoLockup, LogoMark } from '@/components/site-logo'
+import { brand, navLinks } from '@/lib/site'
 
 export function SiteHeader() {
   const pathname = usePathname()
@@ -37,7 +32,6 @@ export function SiteHeader() {
   const darkHero =
     pathname === '/' ||
     (pathname.startsWith('/projects/') && pathname !== '/projects')
-  // Light text only while the header floats transparently over a dark hero image
   const lightText = darkHero && !scrolled && !open
 
   return (
@@ -51,20 +45,17 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:h-20 md:px-10">
         <Link
           href="/"
-          className="flex items-baseline gap-2 font-serif text-2xl leading-none tracking-tight"
+          aria-label={`${brand.name} home`}
+          className={`transition-all duration-500 ${
+            lightText ? 'text-ivory' : 'text-espresso'
+          } ${scrolled ? 'scale-90' : 'scale-100'}`}
         >
-          <span className={lightText ? 'text-ivory' : 'text-espresso'}>M</span>
-          <span
-            className={`text-sm font-sans font-light uppercase tracking-[0.3em] ${
-              lightText ? 'text-ivory/80' : 'text-muted-foreground'
-            }`}
-          >
-            Design
-          </span>
+          <LogoMark className="h-8 w-8 md:hidden" />
+          <LogoLockup className="hidden md:inline-flex" />
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
-          {links.map((link) => {
+          {navLinks.map((link) => {
             const active = pathname.startsWith(link.href)
             return (
               <Link
@@ -115,7 +106,7 @@ export function SiteHeader() {
         }`}
       >
         <nav className="flex flex-col gap-2">
-          {links.map((link, i) => (
+          {navLinks.map((link, i) => (
             <Link
               key={link.href}
               href={link.href}
@@ -127,7 +118,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <p className="mt-auto pb-10 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-          Studio — Mumbai, IN
+          {brand.locationBadge}
         </p>
       </div>
     </header>

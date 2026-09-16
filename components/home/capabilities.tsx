@@ -1,28 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import { Reveal } from '@/components/reveal'
-
-const services = [
-  {
-    n: '01',
-    title: 'Architecture',
-    body: 'From concept to completion — residential, hospitality and workplace buildings shaped by site and light.',
-  },
-  {
-    n: '02',
-    title: 'Interior Design',
-    body: 'Considered interiors with a residential ease, built on honest materials and precise detailing.',
-  },
-  {
-    n: '03',
-    title: 'Master Planning',
-    body: 'Long-life thinking for larger sites — orientation, landscape and the movement between spaces.',
-  },
-  {
-    n: '04',
-    title: 'Furniture & Detail',
-    body: 'Bespoke joinery, lighting and objects designed to complete a space, down to the door handle.',
-  },
-]
+import { services } from '@/lib/services'
 
 export function Capabilities() {
   return (
@@ -45,23 +24,27 @@ export function Capabilities() {
         <div className="md:col-span-7 md:pl-8">
           <Reveal>
             <p className="mb-4 text-xs uppercase tracking-[0.3em] text-bronze">
-              What we do
+              Services
             </p>
             <h2 className="mb-14 font-serif text-4xl font-light text-espresso text-balance md:text-5xl">
-              A single studio, from first sketch to final detail.
+              Architecture, interiors and project management.
             </h2>
           </Reveal>
 
           <div className="grid gap-x-10 gap-y-12 sm:grid-cols-2">
             {services.map((s, i) => (
               <Reveal key={s.n} delay={(i % 2) * 0.1}>
-                <div className="border-t border-border pt-5">
-                  <span className="font-serif text-lg text-bronze">{s.n}</span>
-                  <h3 className="mt-3 text-lg text-espresso">{s.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {s.body}
-                  </p>
-                </div>
+                <Link href={`/services/${s.slug}`} className="group block">
+                  <div className="border-t border-border pt-5">
+                    <span className="font-serif text-lg text-bronze">{s.n}</span>
+                    <h3 className="mt-3 text-lg text-espresso transition-colors group-hover:text-bronze">
+                      {s.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                      {s.summary}
+                    </p>
+                  </div>
+                </Link>
               </Reveal>
             ))}
           </div>

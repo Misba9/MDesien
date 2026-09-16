@@ -20,6 +20,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.excerpt,
+    alternates: { canonical: `/insights/${post.slug}` },
     openGraph: { title: post.title, images: [post.image], type: 'article' },
   }
 }
@@ -88,10 +89,10 @@ export default async function ArticlePage({
 
         <div className="mt-12 border-t border-border pt-8">
           <Link
-            href="/journal"
+            href="/insights"
             className="text-xs uppercase tracking-[0.2em] text-bronze"
           >
-            &larr; Back to journal
+            &larr; Back to insights
           </Link>
         </div>
       </section>
@@ -103,7 +104,7 @@ export default async function ArticlePage({
           </h2>
           <div className="grid gap-x-8 gap-y-12 md:grid-cols-2">
             {more.map((p) => (
-              <Link key={p.slug} href={`/journal/${p.slug}`} className="group block">
+              <Link key={p.slug} href={`/insights/${p.slug}`} className="group block">
                 <div className="relative aspect-[16/10] overflow-hidden bg-sand">
                   <Image
                     src={p.image || '/placeholder.svg'}

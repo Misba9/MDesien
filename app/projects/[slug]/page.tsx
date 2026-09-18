@@ -6,6 +6,7 @@ import { getProject, projects } from '@/lib/projects'
 import { Reveal } from '@/components/reveal'
 import { ProjectGallery } from '@/components/projects/project-gallery'
 import { ProjectWalkthrough } from '@/components/projects/project-walkthrough'
+import { Project3DExperience } from '@/components/projects/project-3d-experience'
 import { getMassing } from '@/lib/massing'
 
 export function generateStaticParams() {
@@ -130,9 +131,11 @@ export default async function ProjectPage({
         </section>
       )}
 
-      <section className="mx-auto max-w-7xl px-6 pb-24 md:px-10 md:pb-36">
+      <section id="project-gallery" className="mx-auto max-w-7xl px-6 pb-24 md:px-10 md:pb-36">
         <ProjectGallery images={project.gallery} title={project.title} />
       </section>
+
+      <Project3DExperience project={project} />
 
       {next && (
         <section className="border-t border-border">

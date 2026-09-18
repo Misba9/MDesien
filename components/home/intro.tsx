@@ -1,3 +1,4 @@
+import { LogoMark } from '@/components/site-logo'
 import { Reveal } from '@/components/reveal'
 
 export function Intro() {
@@ -6,9 +7,12 @@ export function Intro() {
       <div className="grid gap-12 md:grid-cols-12">
         <div className="md:col-span-4">
           <Reveal>
-            <p className="text-xs uppercase tracking-[0.3em] text-bronze">
-              The Studio
-            </p>
+            <div className="flex flex-col items-start gap-5">
+              <LogoMark variant="dark" className="h-14 md:h-16 w-auto drop-shadow-sm" />
+              <p className="text-xs uppercase tracking-[0.3em] text-bronze">
+                The Studio
+              </p>
+            </div>
           </Reveal>
         </div>
         <div className="md:col-span-8">

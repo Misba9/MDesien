@@ -1,8 +1,8 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { DualCta } from '@/components/dual-cta'
 
 export function Hero() {
   return (
@@ -10,13 +10,13 @@ export function Hero() {
       <div className="absolute inset-0">
         <Image
           src="/images/hero-home.png"
-          alt="A warm minimalist residence at dusk with glowing glass facades"
+          alt="M Desien architecture and interior design"
           fill
           priority
           className="object-cover"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-espresso/70 via-espresso/20 to-espresso/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/30 to-espresso/35" />
       </div>
 
       <div className="relative mx-auto w-full max-w-7xl px-6 pb-16 md:px-10 md:pb-24">
@@ -26,32 +26,49 @@ export function Hero() {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="mb-6 text-xs uppercase tracking-[0.3em] text-ivory/80"
         >
-          Architecture &amp; Interior Design Studio in Hyderabad
+          Architecture &amp; Interior Design Studio · Hyderabad
         </motion.h1>
+
+        {/* Phase 4 Headline: Spaces Designed With Purpose. */}
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-4xl font-serif text-5xl font-light leading-[0.98] text-ivory text-balance md:text-7xl lg:text-8xl"
         >
-          Creating spaces that feel like you.
+          Spaces Designed With Purpose.
         </motion.p>
+
+        {/* Phase 4 Supporting Line */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 max-w-xl text-base leading-relaxed text-ivory/85 md:text-lg"
+          className="mt-6 max-w-2xl text-base leading-relaxed text-ivory/90 md:text-lg"
         >
-          Architecture and interior design shaped around people, purpose and
-          possibility.
+          Architecture and interior design shaped around functionality, character
+          and the way people experience space.
         </motion.p>
+
+        {/* Primary CTA: Explore Our Work -> /projects | Secondary CTA: Start a Conversation -> /contact */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-10"
+          className="mt-10 flex flex-wrap items-center gap-4"
         >
-          <DualCta variant="light" />
+          <Link
+            href="/projects"
+            className="inline-flex items-center justify-center border border-ivory bg-ivory px-7 py-3 text-xs uppercase tracking-[0.2em] font-medium text-espresso transition-all duration-300 hover:bg-transparent hover:text-ivory"
+          >
+            Explore Our Work
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center justify-center border border-ivory/60 bg-transparent px-7 py-3 text-xs uppercase tracking-[0.2em] font-medium text-ivory backdrop-blur-sm transition-all duration-300 hover:border-ivory hover:bg-ivory hover:text-espresso"
+          >
+            Start a Conversation
+          </Link>
         </motion.div>
       </div>
 
@@ -69,3 +86,4 @@ export function Hero() {
     </section>
   )
 }
+

@@ -13,7 +13,7 @@ export const exampleProjects: Project[] = [
   {
     slug: 'hillside-villa',
     title: 'Hillside Villa',
-    category: 'Residential',
+    category: 'Architecture',
     location: 'Lonavala, IN',
     year: '2024',
     area: '620 m²',
@@ -36,11 +36,15 @@ export const exampleProjects: Project[] = [
       { label: 'Client', value: 'Private' },
       { label: 'Photography', value: 'Studio archive' },
     ],
+    walkthroughVideo: '/videos/walkthrough-sample.mp4',
+    panorama: '/panoramas/interior-360.jpg',
+    model3d: '/models/villa-model.glb',
+    enter3dLabel: 'ENTER THE SPACE',
   },
   {
     slug: 'riverside-house',
     title: 'Riverside House',
-    category: 'Residential',
+    category: 'Architecture',
     location: 'Alibaug, IN',
     year: '2023',
     area: '480 m²',
@@ -67,7 +71,7 @@ export const exampleProjects: Project[] = [
   {
     slug: 'atelier-offices',
     title: 'Atelier Offices',
-    category: 'Workplace',
+    category: 'Corporate Interior',
     location: 'Pune, IN',
     year: '2024',
     area: '1,150 m²',
@@ -121,7 +125,7 @@ export const exampleProjects: Project[] = [
   {
     slug: 'courtyard-house',
     title: 'Courtyard House',
-    category: 'Residential',
+    category: 'Residential Interior',
     location: 'Ahmedabad, IN',
     year: '2022',
     area: '390 m²',
@@ -148,7 +152,7 @@ export const exampleProjects: Project[] = [
   {
     slug: 'skyline-penthouse',
     title: 'Skyline Penthouse',
-    category: 'Residential',
+    category: 'Residential Interior',
     location: 'Mumbai, IN',
     year: '2024',
     area: '540 m²',

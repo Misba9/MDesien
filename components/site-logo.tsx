@@ -1,34 +1,145 @@
-type LogoProps = {
+import Image from 'next/image'
+
+export type LogoVariant = 'dark' | 'light'
+
+export type LogoProps = {
+  variant?: LogoVariant
   className?: string
+  priority?: boolean
 }
 
-/** Interlocking M+D monogram. Replace this SVG when the final artwork is supplied. */
-export function LogoMark({ className }: LogoProps) {
+/**
+ * Authentic MD Monogram Mark
+ * Dark: Rich embossed bronze/espresso for ivory & light surfaces
+ * Light: Warm champagne gold for dark backgrounds
+ */
+export function LogoMark({
+  variant = 'dark',
+  className = 'h-8 w-auto',
+  priority = false,
+}: LogoProps) {
+  const isLight = variant === 'light'
   return (
-    <svg
-      viewBox="0 0 72 72"
-      className={className}
-      aria-hidden
-      fill="none"
-    >
-      <rect x="1.5" y="1.5" width="69" height="69" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M16 52V20h7.4L36 42.6 48.6 20H56v32h-7.2V32.2L37.6 52h-3.2L23.2 32.2V52H16Z"
-        fill="currentColor"
-      />
-    </svg>
+    <Image
+      src={isLight ? '/logo-mark-light.png' : '/logo-mark.png'}
+      alt="M Desien Monogram"
+      width={657}
+      height={isLight ? 454 : 482}
+      className={`object-contain ${className}`}
+      priority={priority}
+    />
   )
 }
 
-export function LogoLockup({ className }: LogoProps) {
+/**
+ * Full Horizontal Logo Lockup (MD Monogram + M DESIEN + Subtitle)
+ * Perfectly proportioned for headers, footers and navigation bars.
+ */
+export function LogoLockup({
+  variant = 'dark',
+  className = 'h-9 w-auto',
+  priority = false,
+}: LogoProps) {
+  const isLight = variant === 'light'
   return (
-    <span className={className}>
-      <span className="inline-flex items-center gap-3">
-        <LogoMark className="h-8 w-8 shrink-0" />
-        <span className="font-sans text-[13px] font-light uppercase tracking-[0.28em]">
-          M Desien
-        </span>
-      </span>
-    </span>
+    <Image
+      src={isLight ? '/logo-horizontal-light.png' : '/logo-horizontal.png'}
+      alt="M Desien Architecture & Interior Design Studio"
+      width={1113}
+      height={160}
+      className={`object-contain ${className}`}
+      priority={priority}
+    />
+  )
+}
+
+/**
+ * Full Centered Brand Crest Lockup (MD Monogram + M DESIEN + Subtitle + Tagline)
+ * For hero features, editorial sections, and showcase panels.
+ */
+export function LogoFull({
+  variant = 'dark',
+  className = 'h-32 w-auto',
+  priority = false,
+}: LogoProps) {
+  const isLight = variant === 'light'
+  return (
+    <Image
+      src={isLight ? '/logo-full-light.png' : '/logo-full.png'}
+      alt="M Desien Architecture & Interior Design Studio"
+      width={1112}
+      height={718}
+      className={`object-contain ${className}`}
+      priority={priority}
+    />
+  )
+}
+
+/**
+ * Smooth Crossfade Logo for SiteHeader
+ * Seamlessly transitions between light (champagne gold) and dark (bronze)
+ * on scroll without layout shift or network delay.
+ */
+export function HeaderLogoCrossfade({
+  isLight,
+  scrolled,
+}: {
+  isLight: boolean
+  scrolled: boolean
+}) {
+  return (
+    <div
+      className={`relative flex items-center transition-transform duration-500 ${
+        scrolled ? 'scale-95' : 'scale-100'
+      }`}
+    >
+      {/* Desktop Horizontal Logo */}
+      <div className="relative hidden md:block h-8 lg:h-9 w-[220px] lg:w-[250px]">
+        <Image
+          src="/logo-horizontal-light.png"
+          alt="M Desien"
+          fill
+          sizes="250px"
+          priority
+          className={`object-contain object-left transition-opacity duration-500 ${
+            isLight ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+        />
+        <Image
+          src="/logo-horizontal.png"
+          alt="M Desien"
+          fill
+          sizes="250px"
+          priority
+          className={`object-contain object-left transition-opacity duration-500 ${
+            isLight ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+        />
+      </div>
+
+      {/* Mobile Monogram Mark */}
+      <div className="relative block md:hidden h-8 w-11">
+        <Image
+          src="/logo-mark-light.png"
+          alt="M Desien"
+          fill
+          sizes="48px"
+          priority
+          className={`object-contain object-left transition-opacity duration-500 ${
+            isLight ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
+        />
+        <Image
+          src="/logo-mark.png"
+          alt="M Desien"
+          fill
+          sizes="48px"
+          priority
+          className={`object-contain object-left transition-opacity duration-500 ${
+            isLight ? 'opacity-0 pointer-events-none' : 'opacity-100'
+          }`}
+        />
+      </div>
+    </div>
   )
 }

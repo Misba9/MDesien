@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/services',
     '/projects',
+    '/blog',
     '/insights',
     '/contact',
   ].map((route) => ({
@@ -33,6 +34,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
+  const blogRoutes = posts.map((p) => ({
+    url: `${siteUrl}/blog/${p.slug}`,
+    lastModified: new Date(p.date),
+    changeFrequency: 'yearly' as const,
+    priority: 0.6,
+  }))
+
   const insightRoutes = posts.map((p) => ({
     url: `${siteUrl}/insights/${p.slug}`,
     lastModified: new Date(p.date),
@@ -40,5 +48,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.5,
   }))
 
-  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...insightRoutes]
+  return [
+    ...staticRoutes,
+    ...serviceRoutes,
+    ...projectRoutes,
+    ...blogRoutes,
+    ...insightRoutes,
+  ]
 }
+

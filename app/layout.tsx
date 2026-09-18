@@ -71,24 +71,56 @@ export const viewport: Viewport = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ArchitecturalOffice',
-  name: brand.name,
-  url: siteUrl,
-  email: email.display,
-  telephone: phones.map((p) => p.display),
-  image: `${siteUrl}${ogImage}`,
-  description:
-    'Architecture and interior design studio in Madhapur, Hyderabad.',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress:
-      '3rd Floor, Sai Sudha Sadan, Plot No. 15/1, Sector 3, HUDA Techno Enclave',
-    addressLocality: 'Hyderabad',
-    addressRegion: 'Telangana',
-    postalCode: '500081',
-    addressCountry: 'IN',
-  },
-  areaServed: studioAddress.lines[4],
+  '@graph': [
+    {
+      '@type': ['ArchitecturalOffice', 'LocalBusiness', 'ProfessionalService'],
+      '@id': `${siteUrl}/#organization`,
+      name: brand.name,
+      alternateName: 'M Desien Architecture & Interior Design',
+      url: siteUrl,
+      email: email.display,
+      telephone: phones.map((p) => p.display),
+      image: `${siteUrl}${ogImage}`,
+      description:
+        'Architecture, interior design, and project management studio based in Madhapur, Hyderabad, led by Manisha.',
+      priceRange: '₹₹₹₹',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress:
+          '3rd Floor, Sai Sudha Sadan, Plot No. 15/1, Sector 3, HUDA Techno Enclave, Opp. Mindspace Raheja IT Park',
+        addressLocality: 'Madhapur, Hyderabad',
+        addressRegion: 'Telangana',
+        postalCode: '500081',
+        addressCountry: 'IN',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: '17.4399',
+        longitude: '78.3807',
+      },
+      openingHoursSpecification: [
+        {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: [
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday',
+          ],
+          opens: '09:30',
+          closes: '18:30',
+        },
+      ],
+      areaServed: [
+        'Hyderabad',
+        'Telangana',
+        'Andhra Pradesh',
+        'India',
+      ],
+    },
+  ],
 }
 
 export default function RootLayout({
@@ -99,6 +131,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`bg-background ${inter.variable} ${cormorant.variable}`}
     >
       <body className="antialiased">
@@ -108,10 +141,11 @@ export default function RootLayout({
         />
         <Cursor />
         <SiteHeader />
-        <main>{children}</main>
+        <main id="main-content">{children}</main>
         <SiteFooter />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
 }
+

@@ -24,6 +24,11 @@ const nextConfig = {
         destination: '/about',
         permanent: true,
       },
+      {
+        source: '/services/interior-design',
+        destination: '/services/interiors',
+        permanent: true,
+      },
     ]
   },
 }

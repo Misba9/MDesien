@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { LogoMark } from '@/components/site-logo'
 import { DualCta } from '@/components/dual-cta'
 
 export function FinalCta() {
@@ -15,6 +16,7 @@ export function FinalCta() {
         />
         <div className="absolute inset-0 bg-espresso/55" />
         <div className="relative mx-auto flex min-h-[70svh] max-w-7xl flex-col items-start justify-center px-6 py-24 md:px-10">
+          <LogoMark variant="light" className="h-12 md:h-14 w-auto mb-6 opacity-90" />
           <p className="mb-6 text-xs uppercase tracking-[0.3em] text-ivory/80">
             Work with us
           </p>

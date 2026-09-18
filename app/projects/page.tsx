@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { PageIntro } from '@/components/page-intro'
 import { ProjectsGrid } from '@/components/projects/projects-grid'
 import { projects } from '@/lib/projects'
+import { brand, siteUrl } from '@/lib/site'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -9,6 +10,22 @@ export const metadata: Metadata = {
   description:
     'Architecture and interior design projects by M Desien, based in Madhapur, Hyderabad. Work will be published here as it is ready to share.',
   alternates: { canonical: '/projects' },
+  openGraph: {
+    title: 'Projects | M Desien',
+    description:
+      'Architecture and interior design projects by M Desien, based in Madhapur, Hyderabad. Work will be published here as it is ready to share.',
+    url: `${siteUrl}/projects`,
+    siteName: brand.name,
+    images: ['/images/hero-home.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Projects | M Desien',
+    description:
+      'Architecture and interior design projects by M Desien, based in Madhapur, Hyderabad. Work will be published here as it is ready to share.',
+    images: ['/images/hero-home.png'],
+  },
 }
 
 export default function ProjectsPage() {

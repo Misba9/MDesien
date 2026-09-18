@@ -1,14 +1,31 @@
 import type { Metadata } from 'next'
+import { LogoMark } from '@/components/site-logo'
 import { PageIntro } from '@/components/page-intro'
 import { Reveal } from '@/components/reveal'
 import { ContactForm } from '@/components/contact/contact-form'
-import { email, phones, studioAddress } from '@/lib/site'
+import { brand, email, phones, siteUrl, studioAddress } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Start a project with M Desien in Madhapur, Hyderabad. Email info@mdesien.com or call +91 9811769424.',
+    'Start a project with M Desien in Madhapur, Hyderabad. Email info@mdesien.com or call +91 9811769424 / +91 9810199913.',
   alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact | M Desien',
+    description:
+      'Start a project with M Desien in Madhapur, Hyderabad. Email info@mdesien.com or call +91 9811769424 / +91 9810199913.',
+    url: `${siteUrl}/contact`,
+    siteName: brand.name,
+    images: ['/images/hero-home.png'],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact | M Desien',
+    description:
+      'Start a project with M Desien in Madhapur, Hyderabad. Email info@mdesien.com or call +91 9811769424 / +91 9810199913.',
+    images: ['/images/hero-home.png'],
+  },
 }
 
 export default function ContactPage() {
@@ -29,6 +46,7 @@ export default function ContactPage() {
           <aside className="md:col-span-4 md:col-start-9">
             <Reveal>
               <div className="border-t border-border pt-6">
+                <LogoMark variant="dark" className="h-10 w-auto mb-6" />
                 <h2 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Enquiries
                 </h2>

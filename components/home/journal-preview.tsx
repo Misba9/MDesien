@@ -11,7 +11,7 @@ export function JournalPreview() {
           <Reveal>
             <div>
               <p className="mb-4 text-xs uppercase tracking-[0.3em] text-bronze">
-                Insights
+                Blog
               </p>
               <h2 className="font-serif text-4xl font-light text-espresso md:text-5xl">
                 Notes from the studio
@@ -20,10 +20,10 @@ export function JournalPreview() {
           </Reveal>
           <Reveal>
             <Link
-              href="/insights"
+              href="/blog"
               className="hidden text-xs uppercase tracking-[0.2em] text-foreground/70 transition-colors hover:text-bronze md:inline-flex"
             >
-              All notes &rarr;
+              All articles &rarr;
             </Link>
           </Reveal>
         </div>
@@ -31,7 +31,7 @@ export function JournalPreview() {
         <div className="grid gap-x-8 gap-y-12 md:grid-cols-3">
           {posts.map((post, i) => (
             <Reveal key={post.slug} delay={i * 0.1}>
-              <Link href={`/insights/${post.slug}`} className="group block">
+              <Link href={`/blog/${post.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-sand">
                   <Image
                     src={post.image || '/placeholder.svg'}
@@ -58,3 +58,4 @@ export function JournalPreview() {
     </section>
   )
 }
+

@@ -31,10 +31,34 @@ export const email = {
   href: 'mailto:info@mdesien.com',
 }
 
+export const serviceSubLinks = [
+  {
+    href: '/services/architecture',
+    label: 'Architecture',
+    description: 'Architecture that responds to context, purpose and character.',
+  },
+  {
+    href: '/services/interiors',
+    label: 'Interiors',
+    description: 'Thoughtful interiors balancing aesthetics, comfort and functionality.',
+  },
+  {
+    href: '/services/project-management',
+    label: 'Project Management',
+    description: 'Coordinated planning and execution from concept to completion.',
+  },
+] as const
+
 export const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/services', label: 'Services' },
+  {
+    href: '/services',
+    label: 'Services',
+    subLinks: serviceSubLinks,
+  },
   { href: '/projects', label: 'Projects' },
-  { href: '/insights', label: 'Insights' },
+  { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },
 ] as const
+

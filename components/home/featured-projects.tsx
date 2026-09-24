@@ -69,12 +69,16 @@ export function FeaturedProjects() {
                         {project.title}
                       </h3>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        {project.category} — {project.location}
+                        {project.location
+                          ? `${project.category} — ${project.location}`
+                          : project.category}
                       </p>
                     </div>
-                    <span className="text-sm text-muted-foreground">
-                      {project.year}
-                    </span>
+                    {project.year && (
+                      <span className="text-sm text-muted-foreground">
+                        {project.year}
+                      </span>
+                    )}
                   </div>
                 </Link>
               </Reveal>

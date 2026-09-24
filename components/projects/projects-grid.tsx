@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
-import { projects, projectCategories } from '@/lib/projects'
+import { projects, projectCategories, projectMatchesCategory } from '@/lib/projects'
 
 export function ProjectsGrid() {
   const [active, setActive] = useState<(typeof projectCategories)[number]>('All')
@@ -12,7 +12,7 @@ export function ProjectsGrid() {
   const filtered =
     active === 'All'
       ? projects
-      : projects.filter((p) => p.category === active)
+      : projects.filter((p) => projectMatchesCategory(p, active))
 
   return (
     <div>
@@ -59,9 +59,11 @@ export function ProjectsGrid() {
                     className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     sizes="(min-width: 768px) 50vw, 100vw"
                   />
-                  <span className="absolute left-4 top-4 bg-ivory/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-espresso">
-                    {project.status}
-                  </span>
+                  {project.status && (
+                    <span className="absolute left-4 top-4 bg-ivory/90 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-espresso">
+                      {project.status}
+                    </span>
+                  )}
                 </div>
                 <div className="mt-5 flex items-baseline justify-between border-t border-border pt-4">
                   <div>
@@ -69,12 +71,16 @@ export function ProjectsGrid() {
                       {project.title}
                     </h3>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      {project.category} — {project.location}
+                      {project.location
+                        ? `${project.category} — ${project.location}`
+                        : project.category}
                     </p>
                   </div>
-                  <span className="text-sm text-muted-foreground">
-                    {project.year}
-                  </span>
+                  {project.year && (
+                    <span className="text-sm text-muted-foreground">
+                      {project.year}
+                    </span>
+                  )}
                 </div>
               </Link>
             </motion.div>

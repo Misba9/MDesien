@@ -1,179 +1,129 @@
 /**
- * EXAMPLE / SEED DATA ONLY — not loaded by the live site.
- *
- * These entries are fictional placeholders from the original template.
- * Do not import this file from app routes or production components.
- * Confirm with the team before deleting; the structure can be reused
- * for real M Desien projects (name, category, location, year, images).
+ * Live project list, imported by lib/projects.ts.
+ * Contemporary Family Residence is real work: city and year stay unset
+ * until M Desien confirms them.
  */
 
 import type { Project } from '@/lib/projects'
 
 export const exampleProjects: Project[] = [
   {
-    slug: 'hillside-villa',
-    title: 'Hillside Villa',
-    category: 'Architecture',
-    location: 'Lonavala, IN',
-    year: '2024',
-    area: '620 m²',
-    status: 'Completed',
-    image: '/images/project-villa-hero.png',
-    summary:
-      'A single-family residence organised around light, cross-ventilation and a continuous dialogue with the landscape.',
-    description: [
-      'Hillside Villa sits low into its slope, its horizontal massing broken only by a cantilevered living volume that reaches toward the valley. The plan is arranged as a sequence of thresholds — from shaded entry court to open living hall — each calibrated to the movement of the sun.',
-      'Warm travertine, honed oak and bronze detailing were chosen for their ability to age gracefully. The result is a home that feels quiet and inevitable, as though it had always belonged to the hillside.',
-    ],
-    gallery: [
-      '/images/project-villa-hero.png',
-      '/images/detail-kitchen.png',
-      '/images/detail-bedroom.png',
-      '/images/detail-stair.png',
-    ],
-    facts: [
-      { label: 'Scope', value: 'Architecture & Interiors' },
-      { label: 'Client', value: 'Private' },
-      { label: 'Photography', value: 'Studio archive' },
-    ],
-    walkthroughVideo: '/videos/walkthrough-sample.mp4',
-    panorama: '/panoramas/interior-360.jpg',
-    model3d: '/models/villa-model.glb',
-    enter3dLabel: 'ENTER THE SPACE',
-  },
-  {
-    slug: 'riverside-house',
-    title: 'Riverside House',
-    category: 'Architecture',
-    location: 'Alibaug, IN',
-    year: '2023',
-    area: '480 m²',
-    status: 'Completed',
-    image: '/images/project-riverside-hero.png',
-    summary:
-      'A low, cantilevered weekend home that frames water and sky through a deep concrete portal.',
-    description: [
-      'Riverside House is conceived as a single horizontal gesture — a heavy roof plane floating above a glazed living level. The architecture recedes so that the water, the light and the changing weather become the primary experience.',
-      'A restrained palette of board-marked concrete, stone and timber grounds the house, while a reflecting pool blurs the edge between built and natural.',
-    ],
-    gallery: [
-      '/images/project-riverside-hero.png',
-      '/images/detail-materials.png',
-      '/images/detail-stair.png',
-      '/images/detail-bedroom.png',
-    ],
-    facts: [
-      { label: 'Scope', value: 'Architecture' },
-      { label: 'Client', value: 'Private' },
-      { label: 'Photography', value: 'Studio archive' },
-    ],
-  },
-  {
-    slug: 'atelier-offices',
-    title: 'Atelier Offices',
-    category: 'Corporate Interior',
-    location: 'Pune, IN',
-    year: '2024',
-    area: '1,150 m²',
-    status: 'Completed',
-    image: '/images/project-office-hero.png',
-    summary:
-      'A workplace interior that trades corporate gloss for warmth, daylight and biophilic calm.',
-    description: [
-      'For Atelier Offices we reimagined the workday as a series of comfortable rooms rather than a grid of desks. Timber slat ceilings soften acoustics and light, while planted thresholds mark the shift between focus and collaboration.',
-      'The material language — ivory plaster, warm oak and bronze — brings a residential ease to a commercial brief.',
-    ],
-    gallery: [
-      '/images/project-office-hero.png',
-      '/images/detail-materials.png',
-      '/images/detail-kitchen.png',
-      '/images/detail-stair.png',
-    ],
-    facts: [
-      { label: 'Scope', value: 'Interior Architecture' },
-      { label: 'Client', value: 'Confidential' },
-      { label: 'Photography', value: 'Studio archive' },
-    ],
-  },
-  {
-    slug: 'terra-hotel',
-    title: 'Terra Boutique Hotel',
-    category: 'Hospitality',
-    location: 'Goa, IN',
-    year: '2023',
-    area: '2,400 m²',
-    status: 'Completed',
-    image: '/images/project-hotel-hero.png',
-    summary:
-      'A 24-key boutique hotel where fluted timber, layered light and curved forms shape a sense of arrival.',
-    description: [
-      'Terra was designed as a retreat that unfolds slowly. The lobby is a double-height room of fluted timber and bronze, its lighting layered to move guests from bright arrival to intimate lounge.',
-      'Curved lounge seating in warm terracotta and ivory establishes a palette that carries into every guest room.',
-    ],
-    gallery: [
-      '/images/project-hotel-hero.png',
-      '/images/detail-bedroom.png',
-      '/images/detail-materials.png',
-      '/images/detail-kitchen.png',
-    ],
-    facts: [
-      { label: 'Scope', value: 'Architecture & Interiors' },
-      { label: 'Client', value: 'Terra Hospitality' },
-      { label: 'Photography', value: 'Studio archive' },
-    ],
-  },
-  {
-    slug: 'courtyard-house',
-    title: 'Courtyard House',
+    slug: 'contemporary-family-residence',
+    title: 'Contemporary Family Residence',
     category: 'Residential Interior',
-    location: 'Ahmedabad, IN',
-    year: '2022',
-    area: '390 m²',
-    status: 'Completed',
-    image: '/images/project-courtyard-hero.png',
+    categories: ['Residential Interior', 'Architecture'],
+    subtitle: 'Residential Interior & Architecture',
+    image: '/projects/contemporary-family-residence/exterior-night.jpg',
     summary:
-      'An inward-looking home built around a single tree, brick and the play of shadow.',
+      'A contemporary family residence combining warm wooden detailing, refined neutral finishes, handcrafted screens and functional interiors.',
     description: [
-      'Courtyard House turns away from a dense urban street to focus entirely on a central open court. A single tree anchors the plan, with every room borrowing its light and greenery.',
-      'Exposed brick and concrete, tempered by timber screens, create a tactile envelope that filters harsh light into soft, shifting shadow.',
+      'This residence was designed around a contemporary architectural language while maintaining a warm and welcoming character. The exterior combines clean horizontal lines, large openings, wooden accents and glass balcony railings. Inside, the design continues with a carefully coordinated palette of wood, neutral surfaces, patterned screens and warm lighting.',
     ],
     gallery: [
-      '/images/project-courtyard-hero.png',
-      '/images/detail-stair.png',
-      '/images/detail-materials.png',
-      '/images/detail-bedroom.png',
+      {
+        src: '/projects/contemporary-family-residence/exterior-day.jpg',
+        category: 'Exterior',
+        alt: 'Contemporary family residence exterior in daylight',
+      },
+      {
+        src: '/projects/contemporary-family-residence/exterior-night.jpg',
+        category: 'Exterior',
+        alt: 'Residence exterior at night with architectural lighting',
+      },
+      {
+        src: '/projects/contemporary-family-residence/living-kitchen.jpg',
+        category: 'Interior',
+        alt: 'Contemporary living and kitchen interior',
+      },
+      {
+        src: '/projects/contemporary-family-residence/puja-space.jpg',
+        category: 'Interior',
+        alt: 'Integrated prayer space with decorative screening',
+      },
+      {
+        src: '/projects/contemporary-family-residence/display-shelves.jpg',
+        category: 'Interior',
+        alt: 'Decorative floating display shelves',
+      },
+      {
+        src: '/projects/contemporary-family-residence/wooden-ceiling.jpg',
+        category: 'Details',
+        alt: 'Wooden ceiling treatment with statement lighting',
+      },
+      {
+        src: '/projects/contemporary-family-residence/wardrobe.jpg',
+        category: 'Details',
+        alt: 'Contemporary wardrobe detailing',
+      },
     ],
-    facts: [
-      { label: 'Scope', value: 'Architecture & Interiors' },
-      { label: 'Client', value: 'Private' },
-      { label: 'Photography', value: 'Studio archive' },
+    facts: [],
+    concept: {
+      title: 'Design Concept',
+      description: 'Modern structure. Warm interiors. Thoughtful details.',
+      points: [
+        'Clean contemporary forms',
+        'Warm wooden elements',
+        'Neutral colour palette',
+        'Decorative geometric screens',
+        'Functional storage',
+        'Layered lighting',
+        'Balance between openness and privacy',
+      ],
+    },
+    materials: [
+      'Natural wood',
+      'Stone',
+      'Porcelain tiles',
+      'Glass',
+      'Metal',
+      'Decorative laminates',
     ],
-  },
-  {
-    slug: 'skyline-penthouse',
-    title: 'Skyline Penthouse',
-    category: 'Residential Interior',
-    location: 'Mumbai, IN',
-    year: '2024',
-    area: '540 m²',
-    status: 'In progress',
-    image: '/images/project-penthouse-hero.png',
-    summary:
-      'A high-rise residence where marble, oak and bronze frame the city at dusk.',
-    description: [
-      'Skyline Penthouse reworks a standard developer shell into a sequence of generous, light-filled rooms. Floor-to-ceiling glazing is balanced by warm oak paneling and honed marble, keeping the interior grounded against the vast city view.',
-      'A sculptural bronze chandelier marks the dining room as the social heart of the home.',
+    features: [
+      {
+        title: 'Contemporary Façade',
+        description:
+          'Horizontal exterior detailing, wooden accents and glass railings create a clean modern elevation.',
+      },
+      {
+        title: 'Decorative Screens',
+        description:
+          'Geometric screens provide privacy while adding an architectural identity to the interiors.',
+      },
+      {
+        title: 'Warm Wooden Ceiling',
+        description:
+          'A wooden ceiling treatment introduces warmth and texture to the interior.',
+      },
+      {
+        title: 'Custom Display Shelves',
+        description:
+          'Minimal floating shelves combine display, storage and personalization.',
+      },
+      {
+        title: 'Functional Kitchen',
+        description:
+          'Neutral cabinetry and clean lines create a practical contemporary kitchen.',
+      },
+      {
+        title: 'Statement Lighting',
+        description:
+          'A sculptural lighting fixture becomes a focal point while concealed lighting adds ambience.',
+      },
+      {
+        title: 'Puja Space',
+        description:
+          'A dedicated prayer area is integrated into the circulation space using decorative screening and warm finishes.',
+      },
+      {
+        title: 'Night Façade',
+        description:
+          "Architectural lighting highlights the home's textures, openings and material palette after dark.",
+      },
     ],
-    gallery: [
-      '/images/project-penthouse-hero.png',
-      '/images/detail-kitchen.png',
-      '/images/detail-bedroom.png',
-      '/images/detail-materials.png',
-    ],
-    facts: [
-      { label: 'Scope', value: 'Interior Architecture' },
-      { label: 'Client', value: 'Private' },
-      { label: 'Photography', value: 'Render' },
-    ],
+    editorial: {
+      src: '/projects/contemporary-family-residence/wooden-ceiling.jpg',
+      alt: 'Wooden ceiling treatment with statement lighting',
+      text: 'A wooden ceiling treatment introduces warmth and texture to the interior.',
+    },
   },
 ]

@@ -89,53 +89,57 @@ export function HeaderLogoCrossfade({
 }) {
   return (
     <div
-      className={`relative flex items-center transition-transform duration-500 ${
-        scrolled ? 'scale-95' : 'scale-100'
+      className={`relative flex items-center transition-transform duration-500 ease-out ${
+        scrolled ? 'scale-[0.96]' : 'scale-100'
       }`}
     >
-      {/* Desktop Horizontal Logo */}
-      <div className="relative hidden md:block h-8 lg:h-9 w-[220px] lg:w-[250px]">
+      {/* Desktop horizontal lockup — shown with full nav (lg+) */}
+      <div className="relative hidden h-8 w-[220px] lg:block lg:h-10 lg:w-[260px]">
         <Image
           src="/logo-horizontal-light.png"
-          alt="M Desien"
+          alt=""
           fill
-          sizes="250px"
+          sizes="260px"
           priority
-          className={`object-contain object-left transition-opacity duration-500 ${
+          aria-hidden={!isLight}
+          className={`object-contain object-left transition-opacity duration-500 ease-out ${
             isLight ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         />
         <Image
           src="/logo-horizontal.png"
-          alt="M Desien"
+          alt=""
           fill
-          sizes="250px"
+          sizes="260px"
           priority
-          className={`object-contain object-left transition-opacity duration-500 ${
+          aria-hidden={isLight}
+          className={`object-contain object-left transition-opacity duration-500 ease-out ${
             isLight ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
         />
       </div>
 
-      {/* Mobile Monogram Mark */}
-      <div className="relative block md:hidden h-8 w-11">
+      {/* Compact MD mark for mobile + tablet hamburger header (~48–52px) */}
+      <div className="relative block h-12 w-[70px] sm:h-[3.25rem] sm:w-[76px] lg:hidden">
         <Image
           src="/logo-mark-light.png"
-          alt="M Desien"
+          alt=""
           fill
-          sizes="48px"
+          sizes="76px"
           priority
-          className={`object-contain object-left transition-opacity duration-500 ${
+          aria-hidden={!isLight}
+          className={`object-contain object-left transition-opacity duration-500 ease-out ${
             isLight ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}
         />
         <Image
           src="/logo-mark.png"
-          alt="M Desien"
+          alt=""
           fill
-          sizes="48px"
+          sizes="76px"
           priority
-          className={`object-contain object-left transition-opacity duration-500 ${
+          aria-hidden={isLight}
+          className={`object-contain object-left transition-opacity duration-500 ease-out ${
             isLight ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
         />

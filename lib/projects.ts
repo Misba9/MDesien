@@ -1,15 +1,33 @@
 import { exampleProjects } from '@/data/projects.example'
+import type { WalkthroughConfig } from '@/lib/walkthrough'
 
 export type ProjectGalleryImage = {
   src: string
   alt?: string
   category?: string
+  aspect?: 'portrait' | 'landscape'
 }
 
 export type NormalizedGalleryImage = {
   src: string
   alt: string
   category?: string
+  aspect?: 'portrait' | 'landscape'
+}
+
+export type ProjectFact = {
+  label: string
+  value: string
+  /** Studio has not confirmed this value. */
+  pending?: boolean
+}
+
+export type MaterialStudy = {
+  name: string
+  description: string
+  src: string
+  alt: string
+  objectPosition?: string
 }
 
 export type Project = {
@@ -32,14 +50,29 @@ export type Project = {
   summary: string
   description: string[]
   gallery: Array<string | ProjectGalleryImage>
-  facts: { label: string; value: string }[]
+  facts: ProjectFact[]
   concept?: {
     title: string
     description: string
     points: string[]
+    body?: string[]
   }
   materials?: string[]
+  materialsNote?: string
+  materialStudies?: MaterialStudy[]
   features?: { title: string; description: string }[]
+  process?: { step: string; title: string; description: string }[]
+  processNote?: string
+  outcome?: {
+    title: string
+    body: string
+    src?: string
+    alt?: string
+  }
+  /** Shown when no walkthrough, panorama, or model is published. */
+  walkthroughNote?: string
+  /** Cinematic walkthrough. Omit `video` until the file is ready. */
+  walkthrough?: WalkthroughConfig
   editorial?: {
     src: string
     alt: string
@@ -70,6 +103,7 @@ export function normalizeGallery(
       src: item.src,
       alt: item.alt ?? `${title} — view ${i + 1}`,
       category: item.category,
+      aspect: item.aspect,
     }
   })
 }

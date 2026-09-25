@@ -17,7 +17,7 @@ export const defaultWalkthroughRenders: RenderAsset[] = [
     title: 'Living Pavilion & Courtyard',
     subtitle: 'High-fidelity spatial lighting & material study',
     src: '/images/hero-home.png',
-    videoSrc: '/videos/walkthrough-sample.mp4',
+    videoSrc: '/herosection-video.mp4',
   },
   {
     id: 'detail-materials',

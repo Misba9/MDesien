@@ -1,5 +1,6 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { LogoLockup, LogoMark } from '@/components/site-logo'
+import { LogoMark } from '@/components/site-logo'
 import { brand, email, navLinks, phones, serviceSubLinks, studioAddress } from '@/lib/site'
 
 export function SiteFooter() {
@@ -16,11 +17,15 @@ export function SiteFooter() {
               aria-label={`${brand.name} home`}
               className="inline-block transition-opacity hover:opacity-85"
             >
-              <LogoLockup variant="dark" className="h-10 md:h-12 w-auto" />
+              <Image
+                src="/logo.png"
+                alt="M Desien Architecture & Interior Design Studio"
+                width={1114}
+                height={721}
+                className="h-auto w-[11.5rem] object-contain md:w-[14rem]"
+                sizes="(min-width: 768px) 224px, 184px"
+              />
             </Link>
-            <p className="mt-2 text-xs uppercase tracking-[0.2em] text-bronze">
-              {brand.tagline}
-            </p>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
               {studioAddress.singleLine}
             </p>

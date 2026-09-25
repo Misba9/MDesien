@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import { LogoMark } from '@/components/site-logo'
 import { PageIntro } from '@/components/page-intro'
 import { Reveal } from '@/components/reveal'
 import { DualCta } from '@/components/dual-cta'
@@ -127,7 +125,14 @@ export default function AboutPage() {
           <div className="md:col-span-4">
             <Reveal>
               <div className="flex flex-col items-start gap-5">
-                <LogoMark variant="dark" className="h-14 md:h-16 w-auto drop-shadow-sm" />
+                <Image
+                  src="/logo.png"
+                  alt="M Desien Architecture & Interior Design Studio"
+                  width={1114}
+                  height={721}
+                  className="h-auto w-[14rem] object-contain md:w-[18rem]"
+                  sizes="(min-width: 768px) 288px, 224px"
+                />
                 <p className="text-xs uppercase tracking-[0.3em] text-bronze">
                   Leadership
                 </p>

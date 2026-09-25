@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { LogoMark } from '@/components/site-logo'
+import Image from 'next/image'
 import { PageIntro } from '@/components/page-intro'
 import { Reveal } from '@/components/reveal'
 import { ContactForm } from '@/components/contact/contact-form'
@@ -46,7 +46,14 @@ export default function ContactPage() {
           <aside className="md:col-span-4 md:col-start-9">
             <Reveal>
               <div className="border-t border-border pt-6">
-                <LogoMark variant="dark" className="h-10 w-auto mb-6" />
+                <Image
+                  src="/logo.png"
+                  alt="M Desien Architecture & Interior Design Studio"
+                  width={1114}
+                  height={721}
+                  className="mb-6 h-auto w-[12rem] object-contain md:w-[14rem]"
+                  sizes="(min-width: 768px) 224px, 192px"
+                />
                 <h2 className="text-xs uppercase tracking-[0.2em] text-muted-foreground">
                   Enquiries
                 </h2>

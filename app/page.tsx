@@ -3,7 +3,8 @@ import { Hero } from '@/components/home/hero'
 import { Intro } from '@/components/home/intro'
 import { Capabilities } from '@/components/home/capabilities'
 import { FeaturedProjects } from '@/components/home/featured-projects'
-import { Walkthrough3DSection } from '@/components/shared/walkthrough-3d-section'
+import { ThreeDWalkthrough } from '@/components/shared/three-d-walkthrough'
+import { studioWalkthroughSection } from '@/lib/walkthrough'
 import { DesignApproach } from '@/components/home/design-approach'
 import { WhyMDesien } from '@/components/home/why-m-desien'
 import { TestimonialsSection } from '@/components/home/testimonials'
@@ -35,10 +36,11 @@ export default function HomePage() {
       <FeaturedProjects />
 
       {/* 5. 3D Visualization / Walkthrough (Shared Component) */}
-      <Walkthrough3DSection
-        eyebrow="3D Visualization & Walkthrough"
-        heading="Experience The Space Before It Exists"
-        subheading="Detailed digital twins and material walkthroughs allow our clients to inhabit their architecture and interior layouts well before ground is broken."
+      <ThreeDWalkthrough
+        eyebrow={studioWalkthroughSection.eyebrow}
+        heading={studioWalkthroughSection.heading}
+        description={studioWalkthroughSection.description}
+        walkthrough={studioWalkthroughSection.walkthrough}
       />
 
       {/* 6. Design Approach */}

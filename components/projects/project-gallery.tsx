@@ -31,9 +31,13 @@ function groupImages(images: NormalizedGalleryImage[]) {
 export function ProjectGallery({
   images,
   title,
+  heading,
+  sectionId,
 }: {
   images: NormalizedGalleryImage[]
   title: string
+  heading?: string
+  sectionId?: string
 }) {
   const [active, setActive] = useState<number | null>(null)
   const touchX = useRef<number | null>(null)
@@ -73,17 +77,26 @@ export function ProjectGallery({
 
   return (
     <>
-      <div className="space-y-14">
+      <div id={sectionId} className="space-y-14">
+        {heading && (
+          <h2 className="font-serif text-3xl font-light text-espresso md:text-4xl">
+            {heading}
+          </h2>
+        )}
         {groups.map((group) => (
           <div key={group.category ?? 'gallery'}>
-            {group.category && (
+            {!heading && group.category && (
               <h2 className="mb-6 font-serif text-3xl font-light text-espresso md:text-4xl">
                 {group.category}
               </h2>
             )}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6">
-              {group.images.map((image) => {
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
+              {group.images.map((image, groupIndex) => {
                 const index = images.indexOf(image)
+                const landscape = image.aspect === 'landscape'
+                const lead =
+                  landscape && groupIndex === 0 && group.images.length > 2
+                const offset = group.images.length === 2 && groupIndex === 1
                 return (
                   <button
                     key={image.src}
@@ -91,15 +104,32 @@ export function ProjectGallery({
                     onClick={() => setActive(index)}
                     aria-label={image.alt}
                     data-cursor="hover"
-                    className="group relative aspect-[3/4] overflow-hidden bg-sand"
+                    className={`group relative block overflow-hidden bg-sand ${
+                      lead ? 'sm:col-span-2' : ''
+                    } ${offset ? 'sm:mt-10 lg:mt-16' : ''}`}
                   >
-                    <Image
-                      src={image.src || '/placeholder.svg'}
-                      alt={image.alt}
-                      fill
-                      className="object-contain"
-                      sizes="(min-width: 640px) 45vw, 100vw"
-                    />
+                    <div
+                      className={`relative overflow-hidden ${
+                        lead
+                          ? 'aspect-[16/10]'
+                          : landscape
+                            ? 'aspect-[4/3]'
+                            : 'aspect-[3/4]'
+                      }`}
+                    >
+                      <Image
+                        src={image.src || '/placeholder.svg'}
+                        alt={image.alt}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                        sizes={
+                          lead
+                            ? '(min-width: 640px) 90vw, 100vw'
+                            : '(min-width: 640px) 45vw, 100vw'
+                        }
+                      />
+                      <div className="pointer-events-none absolute inset-0 bg-espresso/0 transition-colors duration-500 group-hover:bg-espresso/10" />
+                    </div>
                   </button>
                 )
               })}

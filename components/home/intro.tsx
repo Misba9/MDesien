@@ -1,14 +1,21 @@
-import { LogoMark } from '@/components/site-logo'
+import Image from 'next/image'
 import { Reveal } from '@/components/reveal'
 
 export function Intro() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 md:px-10 md:py-36">
-      <div className="grid gap-12 md:grid-cols-12">
+      <div className="grid items-start gap-10 md:grid-cols-12 md:gap-12 lg:gap-16">
         <div className="md:col-span-4">
           <Reveal>
-            <div className="flex flex-col items-start gap-5">
-              <LogoMark variant="dark" className="h-14 md:h-16 w-auto drop-shadow-sm" />
+            <div className="flex flex-col items-center gap-4 md:items-start md:gap-5">
+              <Image
+                src="/logo.png"
+                alt="M Desien Architecture & Interior Design Studio"
+                width={1114}
+                height={721}
+                className="h-auto w-[min(100%,14.5rem)] object-contain sm:w-[16.5rem] md:w-[18.75rem] lg:w-[21rem]"
+                sizes="(min-width: 1024px) 336px, (min-width: 768px) 300px, (min-width: 640px) 264px, 232px"
+              />
               <p className="text-xs uppercase tracking-[0.3em] text-bronze">
                 The Studio
               </p>

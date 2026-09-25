@@ -211,9 +211,10 @@ export const exampleProjects: Project[] = [
     walkthrough: {
       poster: `${residence}/exterior-night.jpg`,
       posterAlt: 'Residence exterior at night with architectural lighting',
+      video: '/herosection-video.mp4',
       title: 'Contemporary Family Residence',
       description:
-        'A walkthrough video has not been published for this residence. The still is project photography.',
+        'A cinematic walkthrough of the residence — light, material, and spatial proportion before the build.',
     },
   },
 ]

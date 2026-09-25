@@ -18,6 +18,21 @@ export const metadata: Metadata = {
   description:
     'M Desien is an architecture and interior design studio in Madhapur, Hyderabad. Spaces designed with purpose — shaped around functionality, character and the way people experience space.',
   alternates: { canonical: '/' },
+  openGraph: {
+    title: 'M Desien | Architecture & Interior Design Studio in Hyderabad',
+    description:
+      'Architecture and interior design shaped around functionality, character and the way people experience space. Studio in Madhapur, Hyderabad.',
+    url: '/',
+    type: 'website',
+    images: ['/images/hero-home.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'M Desien | Architecture & Interior Design Studio in Hyderabad',
+    description:
+      'Architecture and interior design shaped around functionality, character and the way people experience space.',
+    images: ['/images/hero-home.png'],
+  },
 }
 
 export default function HomePage() {

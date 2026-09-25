@@ -45,6 +45,18 @@ export const metadata: Metadata = {
     'residential architecture Hyderabad',
   ],
   authors: [{ name: brand.name }],
+  alternates: { canonical: '/' },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
   openGraph: {
     title: 'M Desien | Architecture & Interior Design Studio in Hyderabad',
     description:

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Project } from '@/lib/projects'
 import { projects } from '@/lib/projects'
-import { Reveal } from '@/components/reveal'
+import { Reveal, RevealImage } from '@/components/reveal'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
@@ -21,7 +21,7 @@ function ProjectCard({ project }: { project: Project }) {
       href={`/projects/${project.slug}`}
       className="group block outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory"
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-sand md:aspect-[4/3]">
+      <RevealImage className="relative aspect-[16/10] overflow-hidden bg-sand md:aspect-[4/3]">
         <Image
           src={project.image || '/placeholder.svg'}
           alt={project.title}
@@ -38,7 +38,7 @@ function ProjectCard({ project }: { project: Project }) {
             </span>
           </span>
         </div>
-      </div>
+      </RevealImage>
       <div className="mt-5 border-t border-border pt-4">
         <h3 className="font-serif text-2xl text-espresso transition-colors duration-300 group-hover:text-bronze">
           {project.title}
@@ -60,7 +60,7 @@ function FeaturedProject({ project }: { project: Project }) {
         href={`/projects/${project.slug}`}
         className="group grid items-stretch outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory lg:grid-cols-12 lg:gap-10 xl:gap-14"
       >
-        <div className="relative aspect-[4/3] overflow-hidden bg-sand sm:aspect-[16/10] lg:col-span-8 lg:aspect-auto lg:min-h-[28rem] xl:min-h-[32rem]">
+        <RevealImage className="relative aspect-[4/3] overflow-hidden bg-sand sm:aspect-[16/10] lg:col-span-8 lg:aspect-auto lg:min-h-[28rem] xl:min-h-[32rem]">
           <Image
             src={project.image || '/placeholder.svg'}
             alt={project.title}
@@ -78,7 +78,7 @@ function FeaturedProject({ project }: { project: Project }) {
               </span>
             </span>
           </div>
-        </div>
+        </RevealImage>
 
         <div className="flex flex-col justify-center border-t border-border pt-6 lg:col-span-4 lg:border-t-0 lg:border-l lg:border-border lg:pl-10 lg:pt-0 xl:pl-12">
           <p className="text-xs uppercase tracking-[0.28em] text-bronze">

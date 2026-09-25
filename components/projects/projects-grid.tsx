@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
   projects,
   projectCategories,
@@ -12,6 +12,7 @@ import {
 
 export function ProjectsGrid() {
   const [active, setActive] = useState<(typeof projectCategories)[number]>('All')
+  const reduceMotion = useReducedMotion()
 
   const filtered =
     active === 'All'
@@ -35,7 +36,7 @@ export function ProjectsGrid() {
             {cat}
             {active === cat && (
               <motion.span
-                layoutId="filter-underline"
+                layoutId={reduceMotion ? undefined : 'filter-underline'}
                 className="absolute -bottom-[25px] left-0 h-px w-full bg-bronze"
               />
             )}
@@ -60,19 +61,26 @@ export function ProjectsGrid() {
           </button>
         </div>
       ) : (
-        <motion.div layout className="grid gap-x-8 gap-y-16 md:grid-cols-2">
+        <motion.div
+          layout={!reduceMotion}
+          className="grid gap-x-8 gap-y-16 md:grid-cols-2"
+        >
           <AnimatePresence mode="popLayout">
             {filtered.map((project) => (
               <motion.div
                 key={project.slug}
-                layout
-                initial={{ opacity: 0, y: 20 }}
+                layout={!reduceMotion}
+                initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
                 <Link
                   href={`/projects/${project.slug}`}
+                  data-cursor="hover"
                   className="group block outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-sand md:aspect-[4/3]">

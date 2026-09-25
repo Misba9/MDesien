@@ -28,7 +28,15 @@ export async function generateMetadata({
     description: project.summary,
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: {
-      title: project.title,
+      title: `${project.title} | M Desien`,
+      description: project.summary,
+      url: `/projects/${project.slug}`,
+      type: 'article',
+      images: [project.image],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${project.title} | M Desien`,
       description: project.summary,
       images: [project.image],
     },
@@ -192,63 +200,6 @@ export default async function ProjectPage({
         </section>
       )}
 
-      {(project.materialStudies?.length || project.materials?.length) && (
-        <section
-          id="materials"
-          className="border-t border-border bg-sand/30"
-        >
-          <div className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
-            <SectionHeading
-              eyebrow="Palette"
-              title="Material Palette"
-              lede={project.materialsNote}
-            />
-            {project.materialStudies && project.materialStudies.length > 0 && (
-              <ul className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                {project.materialStudies.map((material, i) => (
-                  <Reveal key={material.name} delay={(i % 4) * 0.05}>
-                    <li className="group border border-border bg-ivory">
-                      <div className="relative aspect-[4/5] overflow-hidden bg-sand">
-                        <Image
-                          src={material.src}
-                          alt={material.alt}
-                          fill
-                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                          style={{
-                            objectPosition: material.objectPosition ?? 'center',
-                          }}
-                          sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
-                        />
-                      </div>
-                      <div className="p-5">
-                        <h3 className="font-serif text-2xl font-light text-espresso">
-                          {material.name}
-                        </h3>
-                        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                          {material.description}
-                        </p>
-                      </div>
-                    </li>
-                  </Reveal>
-                ))}
-              </ul>
-            )}
-            {project.materials && project.materials.length > 0 && (
-              <ul className="mt-8 flex flex-wrap gap-3">
-                {project.materials.map((material) => (
-                  <li
-                    key={material}
-                    className="border border-border bg-ivory/70 px-4 py-3 text-xs uppercase tracking-[0.18em] text-espresso"
-                  >
-                    {material}
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </section>
-      )}
-
       {project.features && project.features.length > 0 && (
         <section
           id="features"
@@ -328,7 +279,11 @@ export default async function ProjectPage({
           eyebrow="3D Visualization & Walkthroughs"
           heading="3D Walkthrough"
           description={project.walkthrough.description}
-          walkthrough={project.walkthrough}
+          walkthrough={{
+            ...project.walkthrough,
+            video:
+              project.walkthrough.video?.trim() || '/herosection-video.mp4',
+          }}
         />
       )}
 

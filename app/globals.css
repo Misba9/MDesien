@@ -92,8 +92,65 @@
   .hairline {
     border-color: var(--border);
   }
-  /* Custom cursor hides native cursor on capable pointer devices */
-  @media (hover: hover) and (pointer: fine) {
+  /* Quiet text-link underline micro-interaction */
+  .link-editorial {
+    text-underline-offset: 0.35em;
+    transition: color 0.3s ease, text-decoration-color 0.3s ease;
+  }
+  .link-editorial:hover {
+    text-decoration-line: underline;
+    text-decoration-color: var(--bronze);
+  }
+  /* Home hero CTAs — explicit breakpoints avoid TW utility cascade conflicts */
+  .hero-cta {
+    display: inline-flex;
+    height: 3.5rem; /* 56px mobile */
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    border-width: 1px;
+    padding-inline: 1.75rem;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    outline: none;
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease,
+      transform 0.3s ease;
+  }
+  .hero-cta:active {
+    transform: scale(0.98);
+  }
+  @media (min-width: 768px) {
+    .hero-cta {
+      height: 3rem; /* 48px desktop */
+      width: auto;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+    }
+  }
+  .hero-cta-primary {
+    border-color: var(--ivory);
+    background-color: var(--ivory);
+    color: var(--espresso);
+  }
+  .hero-cta-primary:hover {
+    background-color: transparent;
+    color: var(--ivory);
+  }
+  .hero-cta-secondary {
+    border-color: color-mix(in oklab, var(--ivory) 65%, transparent);
+    background-color: transparent;
+    color: var(--ivory);
+  }
+  .hero-cta-secondary:hover {
+    border-color: var(--ivory);
+    background-color: var(--ivory);
+    color: var(--espresso);
+  }
+  /* Custom cursor: desktop fine-pointer only (hide on touch / small screens) */
+  @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
     .cursor-none-desktop,
     .cursor-none-desktop * {
       cursor: none;

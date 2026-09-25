@@ -1,8 +1,8 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import Image from 'next/image'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { NormalizedGalleryImage } from '@/lib/projects'
 
 function groupImages(images: NormalizedGalleryImage[]) {
@@ -42,6 +42,10 @@ export function ProjectGallery({
   const [active, setActive] = useState<number | null>(null)
   const touchX = useRef<number | null>(null)
   const swiped = useRef(false)
+  const closeRef = useRef<HTMLButtonElement>(null)
+  const lastFocus = useRef<HTMLElement | null>(null)
+  const reduceMotion = useReducedMotion()
+  const labelId = useId()
   const groups = groupImages(images)
 
   const go = (direction: -1 | 1) => {
@@ -53,6 +57,9 @@ export function ProjectGallery({
 
   useEffect(() => {
     if (active === null) return
+
+    lastFocus.current = document.activeElement as HTMLElement | null
+    closeRef.current?.focus()
 
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') setActive(null)
@@ -72,8 +79,11 @@ export function ProjectGallery({
     return () => {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', onKey)
+      lastFocus.current?.focus?.()
     }
   }, [active, images.length])
+
+  const current = active !== null ? images[active] : null
 
   return (
     <>
@@ -102,9 +112,9 @@ export function ProjectGallery({
                     key={image.src}
                     type="button"
                     onClick={() => setActive(index)}
-                    aria-label={image.alt}
+                    aria-label={`Open gallery: ${image.alt}`}
                     data-cursor="hover"
-                    className={`group relative block overflow-hidden bg-sand ${
+                    className={`group relative block overflow-hidden bg-sand outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory ${
                       lead ? 'sm:col-span-2' : ''
                     } ${offset ? 'sm:mt-10 lg:mt-16' : ''}`}
                   >
@@ -139,12 +149,13 @@ export function ProjectGallery({
       </div>
 
       <AnimatePresence>
-        {active !== null && images[active] && (
+        {current && active !== null && (
           <motion.div
-            initial={{ opacity: 0 }}
+            initial={reduceMotion ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[90] flex items-center justify-center bg-espresso p-4 md:p-10"
+            exit={reduceMotion ? undefined : { opacity: 0 }}
+            transition={{ duration: reduceMotion ? 0 : 0.35 }}
+            className="fixed inset-0 z-[90] flex flex-col items-center justify-center bg-espresso/95 p-4 backdrop-blur-sm md:p-10"
             onClick={() => {
               if (swiped.current) {
                 swiped.current = false
@@ -167,15 +178,16 @@ export function ProjectGallery({
             }}
             role="dialog"
             aria-modal="true"
-            aria-label={`${title} gallery`}
+            aria-labelledby={labelId}
           >
             <button
+              ref={closeRef}
               type="button"
               onClick={(event) => {
                 event.stopPropagation()
                 setActive(null)
               }}
-              className="absolute right-6 top-6 z-10 text-xs uppercase tracking-[0.2em] text-ivory"
+              className="absolute right-5 top-5 z-10 text-xs uppercase tracking-[0.2em] text-ivory/90 transition-colors hover:text-ivory md:right-8 md:top-8"
             >
               Close
             </button>
@@ -188,7 +200,7 @@ export function ProjectGallery({
                     event.stopPropagation()
                     go(-1)
                   }}
-                  className="absolute left-3 top-1/2 z-10 -translate-y-1/2 px-2 py-3 text-xs uppercase tracking-[0.2em] text-ivory"
+                  className="absolute left-2 top-1/2 z-10 -translate-y-1/2 px-3 py-4 text-xs uppercase tracking-[0.2em] text-ivory/80 transition-colors hover:text-ivory md:left-6"
                 >
                   Prev
                 </button>
@@ -199,32 +211,50 @@ export function ProjectGallery({
                     event.stopPropagation()
                     go(1)
                   }}
-                  className="absolute right-3 top-1/2 z-10 -translate-y-1/2 px-2 py-3 text-xs uppercase tracking-[0.2em] text-ivory"
+                  className="absolute right-2 top-1/2 z-10 -translate-y-1/2 px-3 py-4 text-xs uppercase tracking-[0.2em] text-ivory/80 transition-colors hover:text-ivory md:right-6"
                 >
                   Next
                 </button>
               </>
             )}
             <motion.div
-              key={images[active].src}
-              initial={{ scale: 0.96, opacity: 0 }}
+              key={current.src}
+              initial={
+                reduceMotion ? false : { scale: 0.97, opacity: 0 }
+              }
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.96, opacity: 0 }}
-              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="relative h-[80svh] w-full max-w-5xl"
+              exit={reduceMotion ? undefined : { scale: 0.97, opacity: 0 }}
+              transition={{
+                duration: reduceMotion ? 0 : 0.4,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="relative h-[72svh] w-full max-w-5xl md:h-[80svh]"
               onClick={(event) => event.stopPropagation()}
             >
               <Image
-                src={images[active].src || '/placeholder.svg'}
-                alt={images[active].alt}
+                src={current.src || '/placeholder.svg'}
+                alt={current.alt}
                 fill
                 className="object-contain"
                 sizes="90vw"
+                priority
               />
             </motion.div>
-            <p className="absolute bottom-6 left-0 right-0 text-center text-[10px] uppercase tracking-[0.2em] text-ivory/70">
-              {active + 1} / {images.length}
-            </p>
+            <div
+              id={labelId}
+              className="mt-5 max-w-xl px-4 text-center"
+              onClick={(event) => event.stopPropagation()}
+            >
+              <p className="text-[10px] uppercase tracking-[0.22em] text-ivory/55">
+                {active + 1} / {images.length}
+                {current.category ? ` · ${current.category}` : ''}
+              </p>
+              {current.alt && (
+                <p className="mt-2 text-sm leading-relaxed text-ivory/85">
+                  {current.alt}
+                </p>
+              )}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

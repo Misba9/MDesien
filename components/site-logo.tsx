@@ -43,10 +43,10 @@ export function LogoLockup({
   const isLight = variant === 'light'
   return (
     <Image
-      src={isLight ? '/logo-horizontal-light.png' : '/logo-horizontal.png'}
+      src={isLight ? '/logo-horizontal-light.png' : '/logo-horz.png'}
       alt="M Desien Architecture & Interior Design Studio"
-      width={1113}
-      height={160}
+      width={isLight ? 1113 : 1127}
+      height={isLight ? 160 : 221}
       className={`object-contain ${className}`}
       priority={priority}
     />
@@ -107,7 +107,7 @@ export function HeaderLogoCrossfade({
           }`}
         />
         <Image
-          src="/logo-horizontal.png"
+          src="/logo-horz.png"
           alt=""
           fill
           sizes="260px"

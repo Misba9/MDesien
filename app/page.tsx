@@ -10,6 +10,7 @@ import { WhyMDesien } from '@/components/home/why-m-desien'
 import { TestimonialsSection } from '@/components/home/testimonials'
 import { JournalPreview } from '@/components/home/journal-preview'
 import { FinalCta } from '@/components/home/final-cta'
+import { HomeArchitectureStage } from '@/components/home/home-architecture-stage'
 
 export const metadata: Metadata = {
   title: {
@@ -38,33 +39,37 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
-      {/* 1. Hero */}
+      {/* 1. Hero — video remains primary; 3D begins after */}
       <Hero />
 
-      {/* 2. Introduction / About M Desien */}
-      <Intro />
+      {/* Scroll-driven architectural model behind mid-page content */}
+      <HomeArchitectureStage>
+        {/* 2. Introduction / About M Desien */}
+        <Intro />
 
-      {/* 3. Services */}
-      <Capabilities />
+        {/* 3. Services */}
+        <Capabilities />
 
-      {/* 4. Featured Projects */}
-      <FeaturedProjects />
+        {/* 4. Featured Projects */}
+        <FeaturedProjects />
 
-      {/* 5. 3D Visualization / Walkthrough (Shared Component) */}
-      <ThreeDWalkthrough
-        eyebrow={studioWalkthroughSection.eyebrow}
-        heading={studioWalkthroughSection.heading}
-        description={studioWalkthroughSection.description}
-        walkthrough={studioWalkthroughSection.walkthrough}
-      />
+        {/* 5. 3D Visualization / Walkthrough (Shared Component) */}
+        <ThreeDWalkthrough
+          eyebrow={studioWalkthroughSection.eyebrow}
+          heading={studioWalkthroughSection.heading}
+          description={studioWalkthroughSection.description}
+          walkthrough={studioWalkthroughSection.walkthrough}
+        />
 
-      {/* 6. Design Approach */}
-      <DesignApproach />
+        {/* 6. Design Approach */}
+        <DesignApproach />
 
-      {/* 7. Why M Desien */}
-      <WhyMDesien />
+        {/* 7. Why M Desien */}
+        <WhyMDesien />
+      </HomeArchitectureStage>
 
-      {/* 8. Testimonials (Phase 3 Component) */}
+      {/* Solid sections after the architectural journey settles */}
+      {/* 8. Testimonials */}
       <TestimonialsSection />
 
       {/* 9. Blog */}
@@ -72,9 +77,6 @@ export default function HomePage() {
 
       {/* 10. Final CTA */}
       <FinalCta />
-
-      {/* 11. Footer rendered globally by app/layout.tsx */}
     </>
   )
 }
-

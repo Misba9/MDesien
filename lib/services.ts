@@ -1,3 +1,5 @@
+import { siteImages } from '@/lib/site-images'
+
 export type Service = {
   n: string
   slug: string
@@ -27,7 +29,7 @@ export const services: Service[] = [
       'Architectural Planning',
       'Design Development',
     ],
-    image: '/images/hero-home.png',
+    image: siteImages.architecture,
   },
   {
     n: '02',
@@ -43,7 +45,7 @@ export const services: Service[] = [
       'Corporate Interiors',
       'Hospitality Interiors',
     ],
-    image: '/images/detail-materials.png',
+    image: siteImages.interiors,
   },
   {
     n: '03',
@@ -63,7 +65,7 @@ export const services: Service[] = [
       'Timeline Management & Budget Awareness',
       'Final Handover',
     ],
-    image: '/images/project-office-hero.png',
+    image: siteImages.projectManagement,
   },
 ]
 

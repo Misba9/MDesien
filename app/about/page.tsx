@@ -4,6 +4,7 @@ import { PageIntro } from '@/components/page-intro'
 import { Reveal } from '@/components/reveal'
 import { DualCta } from '@/components/dual-cta'
 import { brand, siteUrl } from '@/lib/site'
+import { siteImages } from '@/lib/site-images'
 
 export const metadata: Metadata = {
   title: 'About',
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
       'M Desien is an architecture and interior design studio based in Madhapur, Hyderabad, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
     url: `${siteUrl}/about`,
     siteName: brand.name,
-    images: ['/images/about-studio.png'],
+    images: [siteImages.about],
     type: 'website',
   },
   twitter: {
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     title: 'About | M Desien',
     description:
       'M Desien is an architecture and interior design studio based in Madhapur, Hyderabad, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
-    images: ['/images/about-studio.png'],
+    images: [siteImages.about],
   },
 }
 
@@ -108,8 +109,8 @@ export default function AboutPage() {
         <Reveal>
           <div className="relative aspect-[16/9] overflow-hidden bg-sand border border-border">
             <Image
-              src="/images/about-studio.png"
-              alt={`${brand.name} Studio Interior, Hyderabad`}
+              src={siteImages.about}
+              alt="Living room with a blue sofa, plants and a dark wall"
               fill
               className="object-cover"
               sizes="(min-width: 1024px) 1200px, 100vw"

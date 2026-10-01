@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Reveal } from '@/components/reveal'
 import { services } from '@/lib/services'
+import { siteImages } from '@/lib/site-images'
 
 export function Capabilities() {
   return (
@@ -11,8 +12,8 @@ export function Capabilities() {
           <Reveal>
             <div className="relative aspect-[3/4] overflow-hidden bg-sand">
               <Image
-                src="/images/detail-materials.png"
-                alt="A material palette of oak, travertine, bronze and linen"
+                src={siteImages.living}
+                alt="Contemporary living room with open shelving and a round metal table"
                 fill
                 className="object-cover"
                 sizes="(min-width: 768px) 40vw, 100vw"
@@ -35,6 +36,15 @@ export function Capabilities() {
             {services.map((s, i) => (
               <Reveal key={s.n} delay={(i % 2) * 0.1}>
                 <Link href={`/services/${s.slug}`} className="group block">
+                  <div className="relative mb-5 aspect-[16/10] overflow-hidden bg-sand">
+                    <Image
+                      src={s.image}
+                      alt=""
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      sizes="(min-width: 768px) 28vw, 100vw"
+                    />
+                  </div>
                   <div className="border-t border-border pt-5">
                     <span className="font-serif text-lg text-bronze">{s.n}</span>
                     <h3 className="mt-3 text-lg text-espresso transition-colors group-hover:text-bronze">

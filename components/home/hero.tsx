@@ -3,35 +3,14 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useSpring,
-  type MotionValue,
-} from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 const ease = [0.22, 1, 0.36, 1] as const
-
-/**
- * Pinned distance for the 10s hero. 230vh total ≈ 130vh of scroll while stuck,
- * so ~10% of the timeline is about one second of footage, not a short flick.
- */
-const HERO_SCROLL_CLASS = 'h-[230vh]'
-
-/** Skip seeks smaller than this so the decoder isn't restarted every tick. */
-const SEEK_EPSILON = 0.03
 
 const HERO_POSTER = '/images/hero-home.png'
 const HERO_VIDEO_SRC = '/herosection-video.mp4'
 
-function HeroMedia({
-  progress,
-  reduceMotion,
-}: {
-  progress: MotionValue<number>
-  reduceMotion: boolean | null
-}) {
+function HeroMedia({ reduceMotion }: { reduceMotion: boolean | null }) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -40,30 +19,16 @@ function HeroMedia({
     const video = videoRef.current
     if (!video) return
 
-    const seek = (value: number) => {
-      const duration = video.duration
-      if (!Number.isFinite(duration) || duration <= 0) return
-      // Stay off the exact end so the last frame doesn't blank.
-      const next = Math.min(Math.max(value, 0), 0.999) * duration
-      if (Math.abs(video.currentTime - next) < SEEK_EPSILON) return
-      video.currentTime = next
+    video.muted = true
+    const play = () => {
+      void video.play().catch(() => {})
     }
 
-    const unsub = progress.on('change', seek)
+    if (video.readyState >= 2) play()
+    video.addEventListener('canplay', play)
 
-    const prime = () => {
-      video.pause()
-      seek(progress.get())
-    }
-
-    if (video.readyState >= 1) prime()
-    video.addEventListener('loadedmetadata', prime)
-
-    return () => {
-      unsub()
-      video.removeEventListener('loadedmetadata', prime)
-    }
-  }, [progress, reduceMotion])
+    return () => video.removeEventListener('canplay', play)
+  }, [reduceMotion])
 
   if (reduceMotion) {
     return (
@@ -82,6 +47,8 @@ function HeroMedia({
     <video
       ref={videoRef}
       className="absolute inset-0 h-full w-full object-cover object-[center_38%] md:object-center"
+      autoPlay
+      loop
       muted
       playsInline
       preload="auto"
@@ -95,32 +62,12 @@ function HeroMedia({
 
 export function Hero() {
   const reduceMotion = useReducedMotion()
-  const sectionRef = useRef<HTMLElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  })
-  const smoothProgress = useSpring(scrollYProgress, {
-    // Just over critical damping: tracks a slow scroll, glides through a flick,
-    // and does not ring back. Heavier damping (ζ≈2) left the playhead seconds behind.
-    stiffness: reduceMotion ? 1000 : 52,
-    damping: reduceMotion ? 100 : 18,
-    mass: reduceMotion ? 0.2 : 1,
-    restDelta: 0.001,
-  })
 
   return (
-    <section
-      ref={sectionRef}
-      className={
-        reduceMotion
-          ? 'relative bg-espresso'
-          : `relative bg-espresso ${HERO_SCROLL_CLASS}`
-      }
-    >
-      <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden bg-espresso md:items-end">
+    <section className="relative bg-espresso">
+      <div className="relative flex h-[100svh] items-center overflow-hidden bg-espresso md:items-end">
       <div className="absolute inset-0 overflow-hidden">
-        <HeroMedia progress={smoothProgress} reduceMotion={reduceMotion} />
+        <HeroMedia reduceMotion={reduceMotion} />
         {/* Light top veil so the fixed header sits on the media */}
         <div className="absolute inset-0 bg-gradient-to-b from-espresso/25 via-transparent to-transparent md:from-espresso/30" />
         {/* Stronger bottom wash for type readability */}

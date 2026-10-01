@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Hero } from '@/components/home/hero'
 import { Intro } from '@/components/home/intro'
 import { Capabilities } from '@/components/home/capabilities'
+import { HomeCarousel } from '@/components/home/home-carousel'
 import { FeaturedProjects } from '@/components/home/featured-projects'
 import { ThreeDWalkthrough } from '@/components/shared/three-d-walkthrough'
 import { studioWalkthroughSection } from '@/lib/walkthrough'
@@ -49,6 +50,8 @@ export default function HomePage() {
 
         {/* 3. Services */}
         <Capabilities />
+
+        <HomeCarousel />
 
         {/* 4. Featured Projects */}
         <FeaturedProjects />

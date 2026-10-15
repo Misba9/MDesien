@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { PageIntro } from '@/components/page-intro'
 import { Reveal } from '@/components/reveal'
 import { ContactForm } from '@/components/contact/contact-form'
-import { brand, email, phones, siteUrl, studioAddress } from '@/lib/site'
+import { brand, email, phones, siteUrl, studioAddress, whatsapp } from '@/lib/site'
 
 export const metadata: Metadata = {
   title: 'Contact',
@@ -75,6 +75,22 @@ export default function ContactPage() {
                 >
                   {phones[1].display}
                 </a>
+                <div className="mt-6 flex flex-col gap-2.5">
+                  <a
+                    href={whatsapp.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-11 items-center justify-center bg-[#1FAF57] px-5 text-xs font-medium uppercase tracking-[0.2em] text-white transition-transform hover:-translate-y-px active:scale-[0.98] outline-none focus-visible:ring-1 focus-visible:ring-[#1FAF57] focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
+                  >
+                    Chat on WhatsApp
+                  </a>
+                  <a
+                    href={phones[0].href}
+                    className="inline-flex min-h-11 items-center justify-center border border-espresso/30 px-5 text-xs font-medium uppercase tracking-[0.2em] text-espresso transition-colors hover:border-bronze hover:text-bronze active:scale-[0.98] outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-2 focus-visible:ring-offset-ivory"
+                  >
+                    Call now
+                  </a>
+                </div>
               </div>
             </Reveal>
 

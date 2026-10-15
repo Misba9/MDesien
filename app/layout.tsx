@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Inter, Cormorant_Garamond } from 'next/font/google'
 import { SiteHeader } from '@/components/site-header'
 import { SiteFooter } from '@/components/site-footer'
+import { ContactFloat } from '@/components/contact-float'
 import { Cursor } from '@/components/cursor'
 import {
   brand,
@@ -155,6 +156,7 @@ export default function RootLayout({
         <SiteHeader />
         <main id="main-content">{children}</main>
         <SiteFooter />
+        <ContactFloat />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

@@ -26,6 +26,14 @@ export const phones = [
   { display: '+91 9810199913', href: 'tel:+919810199913' },
 ] as const
 
+/** Primary WhatsApp line — same number as phones[0]. */
+export const whatsapp = {
+  display: phones[0].display,
+  href: `https://wa.me/919811769424?text=${encodeURIComponent(
+    "Hi M Desien — I'd like to discuss a project.",
+  )}`,
+} as const
+
 export const email = {
   display: 'info@mdesien.com',
   href: 'mailto:info@mdesien.com',

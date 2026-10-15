@@ -287,6 +287,17 @@ export default async function ProjectPage({
         />
       )}
 
+      {project.films?.map((film, index) => (
+        <ThreeDWalkthrough
+          key={film.video ?? film.title}
+          id={index === 0 ? 'study' : `study-${index + 1}`}
+          eyebrow="Visualization"
+          heading={film.title}
+          description={film.description}
+          walkthrough={film}
+        />
+      ))}
+
       {hasImmersive && !project.walkthrough && (
         <Project3DExperience project={project} />
       )}

@@ -73,6 +73,8 @@ export type Project = {
   walkthroughNote?: string
   /** Cinematic walkthrough. Omit `video` until the file is ready. */
   walkthrough?: WalkthroughConfig
+  /** Further films, shown after the primary walkthrough. */
+  films?: WalkthroughConfig[]
   editorial?: {
     src: string
     alt: string

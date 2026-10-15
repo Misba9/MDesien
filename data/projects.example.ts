@@ -2,11 +2,13 @@
  * Live project list, imported by lib/projects.ts.
  * Contemporary Family Residence is real work: city and year stay unset
  * until M Desien confirms them.
+ * Aparna Serene Park is an interior for Mr. Partha, in carpentry as of 2026.
  */
 
 import type { Project } from '@/lib/projects'
 
 const residence = '/projects/contemporary-family-residence'
+const aparna = '/projects/aparna-serene-park-residence'
 
 export const exampleProjects: Project[] = [
   {
@@ -216,5 +218,262 @@ export const exampleProjects: Project[] = [
       description:
         'A cinematic walkthrough of the residence — light, material, and spatial proportion before the build.',
     },
+  },
+  {
+    slug: 'aparna-serene-park-residence',
+    title: 'Aparna Serene Park Residence',
+    category: 'Residential Interior',
+    categories: ['Residential Interior'],
+    subtitle: 'Residence for Mr. Partha',
+    location: 'Aparna Serene Park, Hyderabad',
+    year: '2026',
+    status: 'In progress',
+    image: `${aparna}/living-day.jpg`,
+    summary:
+      'An apartment interior for Mr. Partha, planned as a timber living room with a slatted screen, built-in storage, and a lit feature wall. Carpentry is underway on site.',
+    description: [
+      'The living room is one timber composition. A full-height wall holds the television, open display, and lit shelves. A slatted screen with a display shelf divides that wall from the seating without closing the room, and the kitchen sits beyond a timber-framed opening.',
+      'The same screen, television unit, wardrobes, and kitchen carcasses are in carpentry in the apartment. A diamond-panel wall is already fixed on site; the visualization shows it finished in timber, with brass inlay, a lit niche, and a jaali. Laminate faces and lighting are still to come.',
+    ],
+    gallery: [
+      {
+        src: `${aparna}/living-day.jpg`,
+        category: 'Living room',
+        aspect: 'landscape',
+        alt: 'Daylight view of the living room, with the timber wall, slatted screen, and kitchen beyond',
+      },
+      {
+        src: `${aparna}/living-evening.jpg`,
+        category: 'Living room',
+        aspect: 'landscape',
+        alt: 'The same living room with shelf lighting on and the screen display lit',
+      },
+      {
+        src: `${aparna}/feature-wall.jpg`,
+        category: 'Living room',
+        aspect: 'landscape',
+        alt: 'Visualization of the feature wall in timber, with brass inlay, a lit niche, and a jaali',
+      },
+      {
+        src: `${aparna}/site-partition.jpg`,
+        category: 'On site',
+        aspect: 'landscape',
+        alt: 'Living-room screen and television unit during carpentry',
+      },
+      {
+        src: `${aparna}/site-slat-screen.jpg`,
+        category: 'On site',
+        aspect: 'portrait',
+        alt: 'Slatted screen being fixed inside a timber frame',
+      },
+      {
+        src: `${aparna}/site-door-screens.jpg`,
+        category: 'On site',
+        aspect: 'portrait',
+        alt: 'Doorways, one open and one filled with a timber slat screen',
+      },
+      {
+        src: `${aparna}/site-feature-wall.jpg`,
+        category: 'On site',
+        aspect: 'landscape',
+        alt: 'Diamond-pattern panels fixed for the feature wall',
+      },
+      {
+        src: `${aparna}/site-wardrobe.jpg`,
+        category: 'On site',
+        aspect: 'portrait',
+        alt: 'Open wardrobe with hanging rails, drawers, and shelves',
+      },
+      {
+        src: `${aparna}/site-wardrobe-study.jpg`,
+        category: 'On site',
+        aspect: 'portrait',
+        alt: 'Wardrobe carcass beside a built-in study ledge',
+      },
+      {
+        src: `${aparna}/site-sliding-wardrobe.jpg`,
+        category: 'On site',
+        aspect: 'portrait',
+        alt: 'Sliding-door wardrobe with the high-gloss faces still protected',
+      },
+      {
+        src: `${aparna}/site-kitchen-shelves.jpg`,
+        category: 'On site',
+        aspect: 'landscape',
+        alt: 'Kitchen wall storage, open shelves, and a window',
+      },
+      {
+        src: `${aparna}/site-kitchen-cabinets.jpg`,
+        category: 'On site',
+        aspect: 'portrait',
+        alt: 'Kitchen base and wall cabinets during fitting',
+      },
+      {
+        src: `${aparna}/site-shoe-unit.jpg`,
+        category: 'On site',
+        aspect: 'portrait',
+        alt: 'Shoe unit with three doors, faces still under protection film',
+      },
+    ],
+    facts: [
+      { label: 'Location', value: 'Aparna Serene Park, Hyderabad' },
+      { label: 'Client', value: 'Mr. Partha' },
+      { label: 'Project Type', value: 'Residential Interior' },
+      { label: 'Scope', value: 'Interior design and execution' },
+      { label: 'Style', value: 'Contemporary' },
+      { label: 'Status', value: 'In progress' },
+      { label: 'Year', value: '2026' },
+      { label: 'Area', value: 'To be confirmed', pending: true },
+    ],
+    concept: {
+      title: 'Design Concept',
+      description:
+        'One timber living room, storage built into the walls, and light held in the shelves.',
+      body: [
+        'The apartment is organised around the living room. Timber runs from the television wall across a slatted screen and into the door frames, so the seating, display, and kitchen read as one sequence rather than separate rooms.',
+        'The screen does the work of a wall without shutting the light off. Vertical slats keep a view through to the window, and a box shelf in the middle of the screen is for objects that stay in view from both sides.',
+        'Storage is built in: wardrobes with hanging, drawers, and a study ledge, a sliding-door wardrobe, a shoe unit, and a kitchen of wall cabinets and open shelves. The second living view is a feature wall of diamond timber panels, already set out on site.',
+      ],
+      points: [
+        'Timber television wall with open display and lit shelves',
+        'Slatted screen and a display shelf between living and seating',
+        'Kitchen in a light finish, seen through a timber frame',
+        'Wardrobes, a study ledge, and a shoe unit built into the rooms',
+        'Feature wall of diamond panels, brass inlay, and a jaali',
+      ],
+    },
+    materials: [
+      'Timber veneer',
+      'High-gloss laminate',
+      'Brass inlay',
+      'Large-format floor tile',
+    ],
+    materialsNote:
+      'Read from the living-room visualization and the carpentry on site. Faces on the kitchen, wardrobes, and shoe unit are still under protection film.',
+    materialStudies: [
+      {
+        name: 'Timber',
+        description:
+          'Walnut-tone timber on the television wall, the slatted screen, and the door frames.',
+        src: `${aparna}/living-day.jpg`,
+        alt: 'Timber television wall and slatted screen in the living room',
+        objectPosition: 'left center',
+      },
+      {
+        name: 'Light',
+        description:
+          'Shelf lighting and a lit display in the screen, shown in the evening view of the same room.',
+        src: `${aparna}/living-evening.jpg`,
+        alt: 'Lit shelves and screen display in the living room',
+        objectPosition: 'center 40%',
+      },
+      {
+        name: 'Brass and jaali',
+        description:
+          'Brass lines across the diamond feature wall, with a backlit jaali at the upper right.',
+        src: `${aparna}/feature-wall.jpg`,
+        alt: 'Brass inlay and jaali on the timber feature wall',
+        objectPosition: 'right center',
+      },
+      {
+        name: 'Laminate',
+        description:
+          'High-gloss wardrobe and kitchen faces, still protected while the carcasses are fitted.',
+        src: `${aparna}/site-sliding-wardrobe.jpg`,
+        alt: 'Sliding wardrobe with protected high-gloss faces',
+        objectPosition: 'center',
+      },
+    ],
+    features: [
+      {
+        title: 'Timber living wall',
+        description:
+          'A full-height wall for the television, books, and objects, with light inside the niches and along the shelves.',
+      },
+      {
+        title: 'Slatted screen',
+        description:
+          'Vertical timber slats and a box shelf divide the room and keep the window in view from the entrance.',
+      },
+      {
+        title: 'Built-in storage',
+        description:
+          'Open wardrobes, a study ledge, a sliding-door wardrobe, and a shoe unit are being made in the rooms.',
+      },
+      {
+        title: 'Kitchen alongside',
+        description:
+          'Light wall and base cabinets, with a short run of open shelves beside the window.',
+      },
+      {
+        title: 'Feature wall',
+        description:
+          'Diamond timber panels, brass inlay, a lit niche, and a jaali. The panel layout is already fixed on site.',
+      },
+      {
+        title: 'Work in progress',
+        description:
+          'October photographs show carcasses, screens, and panels in place. Finished faces and lighting are still to be completed.',
+      },
+    ],
+    editorial: {
+      src: `${aparna}/living-evening.jpg`,
+      alt: 'Living room with the screen shelf and wall niches lit',
+      text: 'The screen shelf and the wall niches carry the evening light in the living room.',
+    },
+    processNote:
+      'The sequence follows the work visible in October 2026: carpentry on site, then the two rooms as drawn.',
+    process: [
+      {
+        step: '01',
+        title: 'Carpentry',
+        description:
+          'The slatted screen, television unit, wardrobes, shoe unit, and kitchen carcasses are built in the apartment.',
+      },
+      {
+        step: '02',
+        title: 'Living room',
+        description:
+          'The timber wall, screen, seating, and kitchen are shown together in daylight, and again with the shelves lit.',
+      },
+      {
+        step: '03',
+        title: 'Feature wall',
+        description:
+          'Diamond panels on site become a timber wall with brass inlay, a lit niche, floating shelves, and a jaali.',
+      },
+      {
+        step: '04',
+        title: 'Faces and light',
+        description:
+          'Laminate faces are still under film, and the lighting and styling in the visualizations are not yet installed.',
+      },
+    ],
+    outcome: {
+      title: 'A timber living room, with the carpentry still open.',
+      body: 'The films show the living room and the feature wall as proposed, including a pass from the site photograph to the finished room. On site, the screen, storage, and kitchen carcasses are in place. Area is still to be confirmed, and the finished faces are not yet on.',
+      src: `${aparna}/living-day.jpg`,
+      alt: 'Daylight visualization of the Aparna Serene Park living room',
+    },
+    walkthrough: {
+      poster: `${aparna}/living-day.jpg`,
+      posterAlt:
+        'Daylight view of the living room with the timber wall and slatted screen',
+      video: `${aparna}/living-walkthrough.mp4`,
+      title: 'Living room',
+      description:
+        'A short film of the living room, moving from the carpentry on site to the timber wall, slatted screen, and seating as proposed.',
+    },
+    films: [
+      {
+        poster: `${aparna}/feature-wall.jpg`,
+        posterAlt:
+          'Feature wall in timber with brass inlay, a lit niche, and a jaali',
+        video: `${aparna}/feature-wall.mp4`,
+        title: 'Feature wall',
+        description:
+          'The second living view: diamond timber panels, brass inlay, a lit niche, floating shelves, and a backlit jaali.',
+      },
+    ],
   },
 ]

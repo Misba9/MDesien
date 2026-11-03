@@ -20,7 +20,7 @@ export const studioWalkthroughSection = {
   walkthrough: {
     poster: '/images/hero-home.png',
     posterAlt: 'Interior study prepared for a cinematic walkthrough',
-    video: '/herosection-video.mp4',
+    video: '/cinematic-walkthrough-1080p.mp4',
     title: 'Cinematic walkthrough',
     description:
       'A studio walkthrough of materials, light and proportion.',

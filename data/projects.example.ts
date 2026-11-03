@@ -213,7 +213,7 @@ export const exampleProjects: Project[] = [
     walkthrough: {
       poster: `${residence}/exterior-night.jpg`,
       posterAlt: 'Residence exterior at night with architectural lighting',
-      video: '/herosection-video.mp4',
+      video: '/cinematic-walkthrough-1080p.mp4',
       title: 'Contemporary Family Residence',
       description:
         'A cinematic walkthrough of the residence — light, material, and spatial proportion before the build.',
@@ -230,9 +230,10 @@ export const exampleProjects: Project[] = [
     status: 'In progress',
     image: `${aparna}/living-day.jpg`,
     summary:
-      'An apartment interior for Mr. Partha, planned as a timber living room with a slatted screen, built-in storage, and a lit feature wall. Carpentry is underway on site.',
+      'An apartment interior for Mr. Partha, planned as a warm timber living space with a slatted screen, dedicated pooja mandir, modern modular kitchen, and serene master bedroom suite. Carpentry is underway on site.',
     description: [
       'The living room is one timber composition. A full-height wall holds the television, open display, and lit shelves. A slatted screen with a display shelf divides that wall from the seating without closing the room, and the kitchen sits beyond a timber-framed opening.',
+      'The apartment includes a dedicated pooja space framed by timber slats with a carved marble arch and brass accents, a modular U-shaped kitchen in two-tone wood and gloss white, and a master bedroom suite with fluted wall paneling and bay window seating.',
       'The same screen, television unit, wardrobes, and kitchen carcasses are in carpentry in the apartment. A diamond-panel wall is already fixed on site; the visualization shows it finished in timber, with brass inlay, a lit niche, and a jaali. Laminate faces and lighting are still to come.',
     ],
     gallery: [
@@ -249,10 +250,34 @@ export const exampleProjects: Project[] = [
         alt: 'The same living room with shelf lighting on and the screen display lit',
       },
       {
+        src: `${aparna}/open-tv.jpeg`,
+        category: 'Living room',
+        aspect: 'landscape',
+        alt: 'Contemporary television unit with marble back panel, open timber shelving, and illuminated glass display',
+      },
+      {
         src: `${aparna}/feature-wall.jpg`,
         category: 'Living room',
         aspect: 'landscape',
         alt: 'Visualization of the feature wall in timber, with brass inlay, a lit niche, and a jaali',
+      },
+      {
+        src: `${aparna}/pooja-room.jpeg`,
+        category: 'Pooja room',
+        aspect: 'portrait',
+        alt: 'Pooja mandir niche with carved marble arch, warm ambient lighting, brass bell and idols, framed by timber fluted slats',
+      },
+      {
+        src: `${aparna}/kitchen.jpeg`,
+        category: 'Kitchen',
+        aspect: 'landscape',
+        alt: 'Modular U-shaped kitchen with textured wood lower cabinets, glossy white overhead units, and glass crockery storage',
+      },
+      {
+        src: `${aparna}/bed-room.jpeg`,
+        category: 'Bedroom',
+        aspect: 'landscape',
+        alt: 'Master bedroom suite with fluted wood panelling, upholstered bed, sliding lacquered wardrobe, window daybed, and floating TV console',
       },
       {
         src: `${aparna}/site-partition.jpg`,
@@ -337,7 +362,9 @@ export const exampleProjects: Project[] = [
       points: [
         'Timber television wall with open display and lit shelves',
         'Slatted screen and a display shelf between living and seating',
-        'Kitchen in a light finish, seen through a timber frame',
+        'Dedicated pooja space with carved marble arch niche and brass bell',
+        'Modular U-shaped kitchen with textured wood and gloss white cabinetry',
+        'Master bedroom suite with fluted panelling, window daybed, and sliding wardrobe',
         'Wardrobes, a study ledge, and a shoe unit built into the rooms',
         'Feature wall of diamond panels, brass inlay, and a jaali',
       ],
@@ -346,10 +373,12 @@ export const exampleProjects: Project[] = [
       'Timber veneer',
       'High-gloss laminate',
       'Brass inlay',
+      'Carved marble',
+      'Fluted wall panelling',
       'Large-format floor tile',
     ],
     materialsNote:
-      'Read from the living-room visualization and the carpentry on site. Faces on the kitchen, wardrobes, and shoe unit are still under protection film.',
+      'Read from the living room, pooja room, kitchen, and bedroom visualizations alongside carpentry on site.',
     materialStudies: [
       {
         name: 'Timber',
@@ -358,6 +387,14 @@ export const exampleProjects: Project[] = [
         src: `${aparna}/living-day.jpg`,
         alt: 'Timber television wall and slatted screen in the living room',
         objectPosition: 'left center',
+      },
+      {
+        name: 'Marble & Arch',
+        description:
+          'Carved marble arch with intricate jaali detailing and brass accents in the dedicated pooja mandir.',
+        src: `${aparna}/pooja-room.jpeg`,
+        alt: 'Carved marble niche and brass bell in the pooja room',
+        objectPosition: 'center',
       },
       {
         name: 'Light',
@@ -396,14 +433,24 @@ export const exampleProjects: Project[] = [
           'Vertical timber slats and a box shelf divide the room and keep the window in view from the entrance.',
       },
       {
+        title: 'Dedicated pooja room',
+        description:
+          'Framed with timber slats, featuring a carved marble arch niche, warm ambient lighting, and traditional brass accents.',
+      },
+      {
+        title: 'Modular kitchen',
+        description:
+          'U-shaped layout with textured base cabinetry, glossy overhead storage, and integrated glass display units.',
+      },
+      {
+        title: 'Master bedroom suite',
+        description:
+          'Warm wood fluted wall panelling, upholstered headboard, integrated window bay seating, and floor-to-ceiling sliding wardrobes.',
+      },
+      {
         title: 'Built-in storage',
         description:
           'Open wardrobes, a study ledge, a sliding-door wardrobe, and a shoe unit are being made in the rooms.',
-      },
-      {
-        title: 'Kitchen alongside',
-        description:
-          'Light wall and base cabinets, with a short run of open shelves beside the window.',
       },
       {
         title: 'Feature wall',
@@ -413,7 +460,7 @@ export const exampleProjects: Project[] = [
       {
         title: 'Work in progress',
         description:
-          'October photographs show carcasses, screens, and panels in place. Finished faces and lighting are still to be completed.',
+          'Photographs show carcasses, screens, and panels in place during on-site carpentry.',
       },
     ],
     editorial: {

@@ -282,7 +282,7 @@ export default async function ProjectPage({
           walkthrough={{
             ...project.walkthrough,
             video:
-              project.walkthrough.video?.trim() || '/herosection-video.mp4',
+              project.walkthrough.video?.trim() || '/cinematic-walkthrough-1080p.mp4',
           }}
         />
       )}

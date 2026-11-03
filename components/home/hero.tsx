@@ -8,7 +8,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 const ease = [0.22, 1, 0.36, 1] as const
 
 const HERO_POSTER = '/images/hero-home.png'
-const HERO_VIDEO_SRC = '/herosection-video.mp4'
+const HERO_VIDEO_SRC = '/cinematic-walkthrough-1080p.mp4'
 
 function HeroMedia({ reduceMotion }: { reduceMotion: boolean | null }) {
   const videoRef = useRef<HTMLVideoElement>(null)

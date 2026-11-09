@@ -211,12 +211,13 @@ export const exampleProjects: Project[] = [
       alt: 'Daylight view of the contemporary family residence',
     },
     walkthrough: {
-      poster: `${residence}/exterior-night.jpg`,
-      posterAlt: 'Residence exterior at night with architectural lighting',
-      video: '/cinematic-walkthrough-1080p.mp4',
+      poster: '/walkthrough-videos/walkthrough-3.jpg',
+      posterAlt: 'Contemporary family residence exterior and interior architectural walkthrough',
+      video: '/walkthrough-videos/walkthrough-3.mp4',
       title: 'Contemporary Family Residence',
       description:
         'A cinematic walkthrough of the residence — light, material, and spatial proportion before the build.',
+      duration: '1:58',
     },
   },
   {
@@ -503,23 +504,54 @@ export const exampleProjects: Project[] = [
       alt: 'Daylight visualization of the Aparna Serene Park living room',
     },
     walkthrough: {
-      poster: `${aparna}/living-day.jpg`,
-      posterAlt:
-        'Daylight view of the living room with the timber wall and slatted screen',
-      video: `${aparna}/living-walkthrough.mp4`,
-      title: 'Living room',
+      poster: '/walkthrough-videos/walkthrough-1.jpg',
+      posterAlt: 'Aparna Serene Park Residence Walkthrough 01',
+      video: '/walkthrough-videos/walkthrough-1.mp4',
+      title: 'Walkthrough 1',
       description:
-        'A short film of the living room, moving from the carpentry on site to the timber wall, slatted screen, and seating as proposed.',
+        'Spatial light study and entrance foyer to living room transition.',
+      duration: '0:20',
     },
-    films: [
+    walkthroughs: [
       {
-        poster: `${aparna}/feature-wall.jpg`,
-        posterAlt:
-          'Feature wall in timber with brass inlay, a lit niche, and a jaali',
-        video: `${aparna}/feature-wall.mp4`,
-        title: 'Feature wall',
+        id: 'walkthrough-1',
+        poster: '/walkthrough-videos/walkthrough-1.jpg',
+        posterAlt: 'Aparna Serene Park Residence Walkthrough 01',
+        video: '/walkthrough-videos/walkthrough-1.mp4',
+        title: 'Walkthrough 1',
         description:
-          'The second living view: diamond timber panels, brass inlay, a lit niche, floating shelves, and a backlit jaali.',
+          'Spatial light study and entrance foyer to living room transition.',
+        duration: '0:20',
+      },
+      {
+        id: 'walkthrough-2',
+        poster: '/walkthrough-videos/walkthrough-2.jpg',
+        posterAlt: 'Aparna Serene Park Residence Walkthrough 02',
+        video: '/walkthrough-videos/walkthrough-2.mp4',
+        title: 'Walkthrough 2',
+        description:
+          'Cinematic study of interior proportions, natural lighting, and circulation.',
+        duration: '1:36',
+      },
+      {
+        id: 'walkthrough-4',
+        poster: '/walkthrough-videos/walkthrough-4.jpg',
+        posterAlt: 'Aparna Serene Park Residence Walkthrough 04',
+        video: '/walkthrough-videos/walkthrough-4.mp4',
+        title: 'Walkthrough 4',
+        description:
+          'Living room carpentry sequence and finished timber wall composition.',
+        duration: '0:08',
+      },
+      {
+        id: 'walkthrough-5',
+        poster: '/walkthrough-videos/walkthrough-5.jpg',
+        posterAlt: 'Aparna Serene Park Residence Walkthrough 05',
+        video: '/walkthrough-videos/walkthrough-5.mp4',
+        title: 'Walkthrough 5',
+        description:
+          'Diamond timber panel feature wall, brass inlay, and lit niche accents.',
+        duration: '0:08',
       },
     ],
   },

@@ -152,9 +152,27 @@
   /* Custom cursor: desktop fine-pointer only (hide on touch / small screens) */
   @media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
     .cursor-none-desktop,
-    .cursor-none-desktop * {
+    .cursor-none-desktop *:not(:fullscreen):not(:fullscreen *) {
       cursor: none;
     }
+  }
+
+  /* Fullscreen: ensure native cursor is always visible and interactive */
+  :fullscreen,
+  :fullscreen *,
+  :-webkit-full-screen,
+  :-webkit-full-screen * {
+    cursor: default !important;
+  }
+  :fullscreen button,
+  :fullscreen [role="slider"],
+  :fullscreen [role="button"],
+  :fullscreen a,
+  :-webkit-full-screen button,
+  :-webkit-full-screen [role="slider"],
+  :-webkit-full-screen [role="button"],
+  :-webkit-full-screen a {
+    cursor: pointer !important;
   }
 }
 

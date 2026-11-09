@@ -91,17 +91,30 @@ export function Cursor() {
       else teardown()
     }
 
+    const onFullscreenChange = () => {
+      if (document.fullscreenElement) {
+        document.documentElement.classList.remove('cursor-none-desktop')
+        setEnabled(false)
+      } else {
+        sync()
+      }
+    }
+
     sync()
     fine.addEventListener('change', sync)
     desktop.addEventListener('change', sync)
     coarse.addEventListener('change', sync)
     reduce.addEventListener('change', sync)
+    document.addEventListener('fullscreenchange', onFullscreenChange)
+    document.addEventListener('webkitfullscreenchange', onFullscreenChange)
 
     return () => {
       fine.removeEventListener('change', sync)
       desktop.removeEventListener('change', sync)
       coarse.removeEventListener('change', sync)
       reduce.removeEventListener('change', sync)
+      document.removeEventListener('fullscreenchange', onFullscreenChange)
+      document.removeEventListener('webkitfullscreenchange', onFullscreenChange)
       teardown()
     }
   }, [])

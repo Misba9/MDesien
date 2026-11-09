@@ -61,6 +61,7 @@ export default function HomePage() {
           eyebrow={studioWalkthroughSection.eyebrow}
           heading={studioWalkthroughSection.heading}
           description={studioWalkthroughSection.description}
+          walkthroughs={studioWalkthroughSection.walkthroughs}
           walkthrough={studioWalkthroughSection.walkthrough}
         />
 

@@ -273,30 +273,32 @@ export default async function ProjectPage({
         </section>
       )}
 
-      {project.walkthrough && (
+      {(project.walkthroughs || project.walkthrough) && (
         <ThreeDWalkthrough
           id="walkthrough"
           eyebrow="3D Visualization & Walkthroughs"
-          heading="3D Walkthrough"
-          description={project.walkthrough.description}
-          walkthrough={{
-            ...project.walkthrough,
-            video:
-              project.walkthrough.video?.trim() || '/cinematic-walkthrough-1080p.mp4',
-          }}
+          heading={
+            project.walkthroughs && project.walkthroughs.length > 1
+              ? `${project.title} — Walkthroughs`
+              : '3D Walkthrough'
+          }
+          description={project.walkthrough?.description}
+          walkthrough={project.walkthrough}
+          walkthroughs={project.walkthroughs}
         />
       )}
 
-      {project.films?.map((film, index) => (
-        <ThreeDWalkthrough
-          key={film.video ?? film.title}
-          id={index === 0 ? 'study' : `study-${index + 1}`}
-          eyebrow="Visualization"
-          heading={film.title}
-          description={film.description}
-          walkthrough={film}
-        />
-      ))}
+      {!project.walkthroughs &&
+        project.films?.map((film, index) => (
+          <ThreeDWalkthrough
+            key={film.video ?? film.title}
+            id={index === 0 ? 'study' : `study-${index + 1}`}
+            eyebrow="Visualization"
+            heading={film.title}
+            description={film.description}
+            walkthrough={film}
+          />
+        ))}
 
       {hasImmersive && !project.walkthrough && (
         <Project3DExperience project={project} />

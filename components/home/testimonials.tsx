@@ -22,9 +22,9 @@ export const testimonialsData: Testimonial[] = [
       "M Desien's exceptional design blends form and function, consistently exceeding expectations. Highly recommended for innovative projects.",
   },
   {
-    name: 'Deepak',
-    initials: 'D',
-    image: '/testimonial/deepak.jpeg',
+    name: 'Rajesh Sharma',
+    initials: 'RS',
+    image: '/testimonial/rajesh.jpeg',
     quote:
       "M Desien's professionalism and attention to detail shine through. From concept to completion, they ensure client satisfaction. Outstanding work!",
   },

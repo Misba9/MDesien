@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { Hero } from '@/components/home/hero'
 import { Intro } from '@/components/home/intro'
 import { Capabilities } from '@/components/home/capabilities'
-import { HomeCarousel } from '@/components/home/home-carousel'
 import { FeaturedProjects } from '@/components/home/featured-projects'
 import { ThreeDWalkthrough } from '@/components/shared/three-d-walkthrough'
 import { studioWalkthroughSection } from '@/lib/walkthrough'
@@ -12,13 +11,14 @@ import { TestimonialsSection } from '@/components/home/testimonials'
 import { JournalPreview } from '@/components/home/journal-preview'
 import { FinalCta } from '@/components/home/final-cta'
 import { HomeArchitectureStage } from '@/components/home/home-architecture-stage'
+import { HomeContact } from '@/components/home/home-contact'
 
 export const metadata: Metadata = {
   title: {
     absolute: 'M Desien | Architecture & Interior Design Studio in Hyderabad',
   },
   description:
-    'M Desien is an architecture and interior design studio in Madhapur, Hyderabad. Spaces designed with purpose — shaped around functionality, character and the way people experience space.',
+    'M Desien is an Architecture and Interior Design Studio in Madhapur, Hyderabad. Spaces designed with purpose — shaped around functionality, character and the way people experience space.',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'M Desien | Architecture & Interior Design Studio in Hyderabad',
@@ -51,8 +51,6 @@ export default function HomePage() {
         {/* 3. Services */}
         <Capabilities />
 
-        <HomeCarousel />
-
         {/* 4. Featured Projects */}
         <FeaturedProjects />
 
@@ -81,6 +79,9 @@ export default function HomePage() {
 
       {/* 10. Final CTA */}
       <FinalCta />
+
+      {/* 11. Contact Form */}
+      <HomeContact />
     </>
   )
 }

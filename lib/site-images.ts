@@ -3,10 +3,15 @@ function webImage(file: string) {
 }
 
 export const siteImages = {
-  architecture: webImage('Architecture.png'),
-  interiors: webImage('Interiors.png'),
-  projectManagement: webImage('Project Management.png'),
-  about: webImage('about01.jpg'),
+  // Service card images — high-quality Unsplash photos
+  architecture:
+    'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80&auto=format&fit=crop',
+  interiors:
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=80&auto=format&fit=crop',
+  projectManagement:
+    'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80&auto=format&fit=crop',
+  about:
+    'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1400&q=85&auto=format&fit=crop',
   feature: webImage('feature.jpg'),
   living: webImage('2.png'),
   carousel: [

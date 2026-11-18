@@ -9,12 +9,12 @@ import { siteImages } from '@/lib/site-images'
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'M Desien is an architecture and interior design studio based in Madhapur, Hyderabad, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
+    'M Desien is an Architecture and Interior Design Studio in Madhapur, Hyderabad, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
   alternates: { canonical: '/about' },
   openGraph: {
     title: 'About | M Desien',
     description:
-      'M Desien is an architecture and interior design studio based in Madhapur, Hyderabad, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
+      'M Desien is an Architecture and Interior Design Studio in Madhapur, Hyderabad, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
     url: `${siteUrl}/about`,
     siteName: brand.name,
     images: [siteImages.about],
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About | M Desien',
     description:
-      'M Desien is an architecture and interior design studio based in Madhapur, Hyderabad, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
+      'M Desien is an Architecture and Interior Design Studio in Madhapur, led by Manisha with 15+ years of experience across residential, corporate and hospitality projects.',
     images: [siteImages.about],
   },
 }
@@ -143,7 +143,7 @@ export default function AboutPage() {
           <div className="md:col-span-8">
             <Reveal>
               <h2 className="font-serif text-3xl font-light leading-[1.25] text-espresso text-balance md:text-4xl">
-                Led by Manisha, Architect &amp; Interior Designer.
+                M Desien is an Architecture and Interior Design Studio in Madhapur.
               </h2>
             </Reveal>
             <Reveal delay={0.08}>

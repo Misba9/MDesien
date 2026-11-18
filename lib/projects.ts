@@ -54,7 +54,7 @@ export type Project = {
   concept?: {
     title: string
     description: string
-    points: string[]
+    points?: string[]
     body?: string[]
   }
   materials?: string[]

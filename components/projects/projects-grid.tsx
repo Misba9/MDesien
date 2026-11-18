@@ -80,8 +80,9 @@ export function ProjectsGrid() {
               >
                 <Link
                   href={`/projects/${project.slug}`}
+                  prefetch
                   data-cursor="hover"
-                  className="group block outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory"
+                  className="group relative z-0 block outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-sand md:aspect-[4/3]">
                     <Image

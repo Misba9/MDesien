@@ -5,27 +5,20 @@ import Image from 'next/image'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import type { NormalizedGalleryImage } from '@/lib/projects'
 
-function groupImages(images: NormalizedGalleryImage[]) {
+/** One continuous stream so the next room fills any open column. */
+function withCategoryLabels(images: NormalizedGalleryImage[]) {
   const hasCategory = images.some((image) => image.category)
   if (!hasCategory) {
-    return [{ category: undefined as string | undefined, images }]
+    return images.map((image) => ({ image, showCategory: false as boolean }))
   }
 
-  const order: string[] = []
-  const groups = new Map<string, NormalizedGalleryImage[]>()
-  for (const image of images) {
+  let previous: string | undefined
+  return images.map((image) => {
     const key = image.category || 'Gallery'
-    if (!groups.has(key)) {
-      groups.set(key, [])
-      order.push(key)
-    }
-    groups.get(key)?.push(image)
-  }
-
-  return order.map((category) => ({
-    category,
-    images: groups.get(category) ?? [],
-  }))
+    const showCategory = key !== previous
+    previous = key
+    return { image, showCategory }
+  })
 }
 
 export function ProjectGallery({
@@ -46,7 +39,12 @@ export function ProjectGallery({
   const lastFocus = useRef<HTMLElement | null>(null)
   const reduceMotion = useReducedMotion()
   const labelId = useId()
-  const groups = groupImages(images)
+  const items = withCategoryLabels(images)
+  // Full-bleed first image only when the rest still pack into even columns
+  const leadFirst =
+    images.length > 2 &&
+    images[0]?.aspect === 'landscape' &&
+    (images.length - 1) % 2 === 0
 
   const go = (direction: -1 | 1) => {
     setActive((current) => {
@@ -87,65 +85,60 @@ export function ProjectGallery({
 
   return (
     <>
-      <div id={sectionId} className="space-y-14">
+      <div id={sectionId}>
         {heading && (
-          <h2 className="font-serif text-3xl font-light text-espresso md:text-4xl">
+          <h2 className="mb-8 font-serif text-3xl font-light text-espresso md:mb-10 md:text-4xl">
             {heading}
           </h2>
         )}
-        {groups.map((group) => (
-          <div key={group.category ?? 'gallery'}>
-            {!heading && group.category && (
-              <h2 className="mb-6 font-serif text-3xl font-light text-espresso md:text-4xl">
-                {group.category}
-              </h2>
-            )}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6">
-              {group.images.map((image, groupIndex) => {
-                const index = images.indexOf(image)
-                const landscape = image.aspect === 'landscape'
-                const lead =
-                  landscape && groupIndex === 0 && group.images.length > 2
-                const offset = group.images.length === 2 && groupIndex === 1
-                return (
-                  <button
-                    key={image.src}
-                    type="button"
-                    onClick={() => setActive(index)}
-                    aria-label={`Open gallery: ${image.alt}`}
-                    data-cursor="hover"
-                    className={`group relative block overflow-hidden bg-sand outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory ${
-                      lead ? 'sm:col-span-2' : ''
-                    } ${offset ? 'sm:mt-10 lg:mt-16' : ''}`}
+        <div className="grid grid-cols-1 items-end gap-4 sm:grid-cols-2 sm:gap-6">
+          {items.map(({ image, showCategory }, index) => {
+            const landscape = image.aspect === 'landscape'
+            const lead = index === 0 && leadFirst
+            return (
+              <div
+                key={image.src}
+                className={lead ? 'sm:col-span-2' : undefined}
+              >
+                {!heading && showCategory && image.category && (
+                  <h2 className="mb-3 font-serif text-2xl font-light text-espresso md:mb-4 md:text-3xl">
+                    {image.category}
+                  </h2>
+                )}
+                <button
+                  type="button"
+                  onClick={() => setActive(index)}
+                  aria-label={`Open gallery: ${image.alt}`}
+                  data-cursor="hover"
+                  className="group relative block w-full overflow-hidden bg-sand outline-none focus-visible:ring-1 focus-visible:ring-bronze focus-visible:ring-offset-4 focus-visible:ring-offset-ivory"
+                >
+                  <div
+                    className={`relative overflow-hidden ${
+                      lead
+                        ? 'aspect-[16/10]'
+                        : landscape
+                          ? 'aspect-[4/3]'
+                          : 'aspect-[3/4]'
+                    }`}
                   >
-                    <div
-                      className={`relative overflow-hidden ${
+                    <Image
+                      src={image.src || '/placeholder.svg'}
+                      alt={image.alt}
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                      sizes={
                         lead
-                          ? 'aspect-[16/10]'
-                          : landscape
-                            ? 'aspect-[4/3]'
-                            : 'aspect-[3/4]'
-                      }`}
-                    >
-                      <Image
-                        src={image.src || '/placeholder.svg'}
-                        alt={image.alt}
-                        fill
-                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                        sizes={
-                          lead
-                            ? '(min-width: 640px) 90vw, 100vw'
-                            : '(min-width: 640px) 45vw, 100vw'
-                        }
-                      />
-                      <div className="pointer-events-none absolute inset-0 bg-espresso/0 transition-colors duration-500 group-hover:bg-espresso/10" />
-                    </div>
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-        ))}
+                          ? '(min-width: 640px) 90vw, 100vw'
+                          : '(min-width: 640px) 45vw, 100vw'
+                      }
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-espresso/0 transition-colors duration-500 group-hover:bg-espresso/10" />
+                  </div>
+                </button>
+              </div>
+            )
+          })}
+        </div>
       </div>
 
       <AnimatePresence>

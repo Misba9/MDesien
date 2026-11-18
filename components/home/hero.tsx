@@ -32,9 +32,10 @@ function HeroMedia({ reduceMotion }: { reduceMotion: boolean | null }) {
       <Image
         src={HERO_POSTER}
         alt="Architectural space walkthrough"
-        fill
+        width={1920}
+        height={1080}
         priority
-        className="object-contain object-center"
+        className="block h-auto w-full md:absolute md:inset-0 md:h-full md:w-full md:object-cover md:object-top"
         sizes="100vw"
       />
     )
@@ -43,7 +44,7 @@ function HeroMedia({ reduceMotion }: { reduceMotion: boolean | null }) {
   return (
     <video
       ref={videoRef}
-      className="absolute inset-0 h-full w-full object-contain object-center bg-espresso"
+      className="block h-auto w-full md:absolute md:inset-0 md:h-full md:w-full md:object-cover md:object-top"
       autoPlay
       loop
       muted
@@ -61,31 +62,31 @@ export function Hero() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <section className="relative bg-espresso">
-      <div className="relative flex h-[100svh] items-center overflow-hidden bg-espresso md:items-end">
-        <div className="absolute inset-0 overflow-hidden">
-          <HeroMedia reduceMotion={reduceMotion} />
-          {/* Subtle top veil so the fixed header sits on the media */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-espresso/40 via-transparent to-transparent" />
-        </div>
-
-        {/* Minimal scroll cue */}
-        <motion.div
-          initial={reduceMotion ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            delay: reduceMotion ? 0 : 0.8,
-            duration: reduceMotion ? 0 : 0.9,
-          }}
-          className="pointer-events-none absolute bottom-8 right-6 hidden items-center gap-3 md:flex md:right-10"
-          aria-hidden
-        >
-          <span className="text-xs uppercase tracking-[0.2em] text-ivory/70">
-            Scroll
-          </span>
-          <span className="h-10 w-px bg-ivory/40" />
-        </motion.div>
+    <section
+      className="relative w-full overflow-hidden bg-espresso pt-[calc(env(safe-area-inset-top,0px)+4.75rem)] sm:pt-[calc(env(safe-area-inset-top,0px)+5.25rem)] md:h-[100svh] md:min-h-[500px] md:pt-0"
+    >
+      <div className="relative w-full md:absolute md:inset-0">
+        <HeroMedia reduceMotion={reduceMotion} />
+        {/* Desktop only: veil under the floating header */}
+        <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-b from-espresso/40 via-transparent to-transparent md:block" />
       </div>
+
+      {/* Minimal scroll cue */}
+      <motion.div
+        initial={reduceMotion ? false : { opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          delay: reduceMotion ? 0 : 0.8,
+          duration: reduceMotion ? 0 : 0.9,
+        }}
+        className="pointer-events-none absolute bottom-8 right-6 hidden items-center gap-3 md:flex md:right-10"
+        aria-hidden
+      >
+        <span className="text-xs uppercase tracking-[0.2em] text-ivory/70">
+          Scroll
+        </span>
+        <span className="h-10 w-px bg-ivory/40" />
+      </motion.div>
     </section>
   )
 }

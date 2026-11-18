@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     template: '%s | M Desien',
   },
   description:
-    'M Desien is an architecture and interior design studio in Madhapur, Hyderabad, led by Manisha. Residential, corporate and hospitality projects.',
+    'M Desien is an Architecture and Interior Design Studio in Madhapur, Hyderabad, led by Manisha. Residential, corporate and hospitality projects.',
   keywords: [
     'M Desien',
     'Architecture Firms in Hyderabad',

@@ -76,40 +76,27 @@ export default async function ServicePage({
 
       {/* 2. Introduction & Body Content (Verbatim) */}
       <section className="mx-auto max-w-7xl px-6 pb-20 md:px-10">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-7">
-            <Reveal>
-              <p className="text-xs uppercase tracking-[0.25em] text-bronze mb-3">
-                Design Philosophy & Approach
-              </p>
-              <h2 className="font-serif text-3xl font-light text-espresso leading-snug md:text-4xl text-balance">
-                {service.title === 'Architecture' &&
-                  'Architecture that responds to context, purpose and character.'}
-                {service.title === 'Interior Design' &&
-                  'Spaces designed around the way people live, work and experience their environment.'}
-                {service.title === 'Project Management' &&
-                  'Coordinated planning and execution from concept to completion.'}
-              </h2>
-            </Reveal>
             <Reveal delay={0.08}>
-              <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">
+              <p className="text-base leading-relaxed text-muted-foreground md:text-lg">
                 {service.body}
               </p>
             </Reveal>
 
             {/* Project Types List / Scope */}
             {service.projectTypes && service.projectTypes.length > 0 && (
-              <div className="mt-10 border-t border-border/80 pt-8">
+              <div className="mt-8 border-t border-border/80 pt-8">
                 <h3 className="text-xs uppercase tracking-[0.2em] font-medium text-espresso mb-4">
                   {isProjectManagement ? 'Scope & Capabilities' : 'Project Types & Focus Areas'}
                 </h3>
-                <div className="grid gap-3 sm:grid-cols-2">
+                <div className="flex flex-col gap-2">
                   {service.projectTypes.map((type) => (
                     <div
                       key={type}
                       className="flex items-center gap-2.5 text-sm text-foreground/90 py-1"
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-bronze" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-bronze flex-shrink-0" />
                       <span>{type}</span>
                     </div>
                   ))}

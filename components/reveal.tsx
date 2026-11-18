@@ -13,6 +13,10 @@ type RevealProps = {
   as?: 'div' | 'span' | 'li'
 }
 
+/**
+ * Keep a stable motion.div tree for SSR/hydration.
+ * Branching on useReducedMotion() used to swap div ↔ motion.div and break clicks.
+ */
 export function Reveal({
   children,
   delay = 0,
@@ -20,18 +24,19 @@ export function Reveal({
   className,
 }: RevealProps) {
   const reduceMotion = useReducedMotion()
-
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>
-  }
+  const instant = Boolean(reduceMotion)
 
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y }}
+      initial={instant ? false : { opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
-      transition={{ duration: 0.8, delay, ease }}
+      transition={{
+        duration: instant ? 0 : 0.8,
+        delay: instant ? 0 : delay,
+        ease,
+      }}
     >
       {children}
     </motion.div>
@@ -40,18 +45,15 @@ export function Reveal({
 
 export function RevealLine({ className }: { className?: string }) {
   const reduceMotion = useReducedMotion()
-
-  if (reduceMotion) {
-    return <div className={className} />
-  }
+  const instant = Boolean(reduceMotion)
 
   return (
     <motion.div
       className={className}
-      initial={{ scaleX: 0 }}
+      initial={instant ? false : { scaleX: 0 }}
       whileInView={{ scaleX: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 1, ease }}
+      transition={{ duration: instant ? 0 : 1, ease }}
       style={{ originX: 0 }}
     />
   )
@@ -70,18 +72,19 @@ export function RevealImage({
   delay = 0,
 }: RevealImageProps) {
   const reduceMotion = useReducedMotion()
-
-  if (reduceMotion) {
-    return <div className={className}>{children}</div>
-  }
+  const instant = Boolean(reduceMotion)
 
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, scale: 1.02 }}
+      initial={instant ? false : { opacity: 0, scale: 1.02 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: '-40px' }}
-      transition={{ duration: 1, delay, ease }}
+      transition={{
+        duration: instant ? 0 : 1,
+        delay: instant ? 0 : delay,
+        ease,
+      }}
     >
       {children}
     </motion.div>

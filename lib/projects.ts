@@ -119,6 +119,72 @@ export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug)
 }
 
+/**
+ * Every walkthrough / film video across all projects.
+ * Used on the homepage so the player streams every file from public/projects.
+ */
+export function getHomeWalkthroughs(): WalkthroughConfig[] {
+  const items: WalkthroughConfig[] = []
+  const seen = new Set<string>()
+
+  const push = (project: Project, film: WalkthroughConfig, index: number) => {
+    const video = film.video?.trim()
+    if (!video || seen.has(video)) return
+    seen.add(video)
+
+    const clipTitle = film.title?.trim()
+    const title =
+      clipTitle && clipTitle !== project.title
+        ? `${project.title} — ${clipTitle}`
+        : project.title
+
+    items.push({
+      ...film,
+      id: film.id
+        ? `${project.slug}-${film.id}`
+        : `${project.slug}-${index}`,
+      title,
+      poster: film.poster || project.image,
+      posterAlt:
+        film.posterAlt ?? `${project.title} walkthrough`,
+    })
+  }
+
+  for (const project of projects) {
+    let index = 0
+
+    if (project.walkthroughs?.length) {
+      for (const film of project.walkthroughs) {
+        push(project, film, index++)
+      }
+    } else if (project.walkthrough) {
+      push(project, project.walkthrough, index++)
+    }
+
+    if (project.films?.length) {
+      for (const film of project.films) {
+        push(project, film, index++)
+      }
+    }
+
+    if (project.walkthroughVideo?.trim()) {
+      push(
+        project,
+        {
+          poster: project.image,
+          posterAlt: `${project.title} walkthrough`,
+          video: project.walkthroughVideo,
+          title: 'Walkthrough',
+          description: project.summary,
+        },
+        index++,
+      )
+    }
+  }
+
+  return items
+}
+
 export const projectCategories = [
   'All',
   'Architecture',

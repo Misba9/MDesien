@@ -4,10 +4,20 @@ import Image from 'next/image'
 import { useEffect, useRef } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 
-const HERO_POSTER = '/walkthrough-videos/walkthrough-2.jpg'
-const HERO_VIDEO_SRC = '/walkthrough-videos/walkthrough-2.mp4'
+type HeroProps = {
+  videoSrc: string
+  poster: string
+  posterAlt?: string
+}
 
-function HeroMedia({ reduceMotion }: { reduceMotion: boolean | null }) {
+function HeroMedia({
+  reduceMotion,
+  videoSrc,
+  poster,
+  posterAlt = 'Architectural space walkthrough',
+}: {
+  reduceMotion: boolean | null
+} & HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -25,13 +35,13 @@ function HeroMedia({ reduceMotion }: { reduceMotion: boolean | null }) {
     video.addEventListener('canplay', play)
 
     return () => video.removeEventListener('canplay', play)
-  }, [reduceMotion])
+  }, [reduceMotion, videoSrc])
 
   if (reduceMotion) {
     return (
       <Image
-        src={HERO_POSTER}
-        alt="Architectural space walkthrough"
+        src={poster}
+        alt={posterAlt}
         width={1920}
         height={1080}
         priority
@@ -50,15 +60,15 @@ function HeroMedia({ reduceMotion }: { reduceMotion: boolean | null }) {
       muted
       playsInline
       preload="auto"
-      poster={HERO_POSTER}
-      aria-label="Architectural space walkthrough"
+      poster={poster}
+      aria-label={posterAlt}
     >
-      <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      <source src={videoSrc} type="video/mp4" />
     </video>
   )
 }
 
-export function Hero() {
+export function Hero({ videoSrc, poster, posterAlt }: HeroProps) {
   const reduceMotion = useReducedMotion()
 
   return (
@@ -66,7 +76,12 @@ export function Hero() {
       className="relative w-full overflow-hidden bg-espresso pt-[calc(env(safe-area-inset-top,0px)+4.75rem)] sm:pt-[calc(env(safe-area-inset-top,0px)+5.25rem)] md:h-[100svh] md:min-h-[500px] md:pt-0"
     >
       <div className="relative w-full md:absolute md:inset-0">
-        <HeroMedia reduceMotion={reduceMotion} />
+        <HeroMedia
+          reduceMotion={reduceMotion}
+          videoSrc={videoSrc}
+          poster={poster}
+          posterAlt={posterAlt}
+        />
         {/* Desktop only: veil under the floating header */}
         <div className="pointer-events-none absolute inset-0 hidden bg-gradient-to-b from-espresso/40 via-transparent to-transparent md:block" />
       </div>

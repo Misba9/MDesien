@@ -12,6 +12,7 @@ import { JournalPreview } from '@/components/home/journal-preview'
 import { FinalCta } from '@/components/home/final-cta'
 import { HomeArchitectureStage } from '@/components/home/home-architecture-stage'
 import { HomeContact } from '@/components/home/home-contact'
+import { getHomeWalkthroughs } from '@/lib/projects'
 
 export const metadata: Metadata = {
   title: {
@@ -38,10 +39,19 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
+  const walkthroughs = getHomeWalkthroughs()
+  const heroWalkthrough = walkthroughs[0]
+
   return (
     <>
-      {/* 1. Hero — video remains primary; 3D begins after */}
-      <Hero />
+      {/* 1. Hero — project walkthrough video */}
+      {heroWalkthrough?.video && (
+        <Hero
+          videoSrc={heroWalkthrough.video}
+          poster={heroWalkthrough.poster}
+          posterAlt={heroWalkthrough.posterAlt}
+        />
+      )}
 
       {/* Scroll-driven architectural model behind mid-page content */}
       <HomeArchitectureStage>
@@ -54,13 +64,13 @@ export default function HomePage() {
         {/* 4. Featured Projects */}
         <FeaturedProjects />
 
-        {/* 5. 3D Visualization / Walkthrough (Shared Component) */}
+        {/* 5. 3D Visualization / Walkthrough — videos from project folders */}
         <ThreeDWalkthrough
           eyebrow={studioWalkthroughSection.eyebrow}
           heading={studioWalkthroughSection.heading}
           description={studioWalkthroughSection.description}
-          walkthroughs={studioWalkthroughSection.walkthroughs}
-          walkthrough={studioWalkthroughSection.walkthrough}
+          walkthroughs={walkthroughs}
+          walkthrough={walkthroughs[0]}
         />
 
         {/* 6. Design Approach */}

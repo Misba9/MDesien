@@ -5,7 +5,6 @@ import { notFound } from 'next/navigation'
 import { PageIntro } from '@/components/page-intro'
 import { DualCta } from '@/components/dual-cta'
 import { Reveal } from '@/components/reveal'
-import { Walkthrough3DSection } from '@/components/shared/walkthrough-3d-section'
 import { getService, services } from '@/lib/services'
 import { brand, siteUrl } from '@/lib/site'
 
@@ -61,8 +60,6 @@ export default async function ServicePage({
   if (!service) notFound()
 
   const others = services.filter((s) => s.slug !== service.slug)
-  const isArchitecture = service.slug === 'architecture'
-  const isInteriors = service.slug === 'interiors'
   const isProjectManagement = service.slug === 'project-management'
 
   return (
@@ -121,21 +118,12 @@ export default async function ServicePage({
         </div>
       </section>
 
-      {/* 3. Reusable 3D Visualization Walkthrough Component (Integrated on Interiors) */}
-      {isInteriors && (
-        <Walkthrough3DSection
-          eyebrow="3D Visualization & Walkthroughs"
-          heading="Visualize Your Space Before It Is Built"
-          subheading="M Desien creates hyper-realistic spatial renderings and walkthrough studies so every texture, light angle, and proportion can be experienced and refined before execution."
-        />
-      )}
-
-      {/* 4. Service CTA */}
+      {/* 3. Service CTA */}
       <section className="mx-auto max-w-7xl px-6 py-16 md:px-10 md:py-24">
         <DualCta />
       </section>
 
-      {/* 5. Other Services Navigation */}
+      {/* 4. Other Services Navigation */}
       <section className="border-t border-border bg-white/60 py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-6 md:px-10">
           <h2 className="mb-10 font-serif text-3xl font-light text-espresso">

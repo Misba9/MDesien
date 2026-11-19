@@ -28,7 +28,7 @@ export function Capabilities() {
               Services
             </p>
             <h2 className="mb-14 font-serif text-4xl font-light text-espresso text-balance md:text-5xl">
-              Architecture, interiors and project management.
+            Architecture, Interiors and Project Management.
             </h2>
           </Reveal>
 

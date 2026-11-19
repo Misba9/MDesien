@@ -26,13 +26,12 @@ export function Intro() {
         <div className="md:col-span-8">
           <Reveal>
             <h2 className="font-serif text-3xl font-light leading-[1.25] text-espresso text-balance md:text-4xl">
-              Led by Manisha, Architect &amp; Interior Designer.
+            M Desien is an Architecture and Interior Design Studio in Madhapur.
             </h2>
           </Reveal>
           <Reveal delay={0.08}>
             <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
-              M Desien is led by Manisha, an architect and interior designer
-              with over 15 years of industry experience. Based in Madhapur,
+            M Desien is led by Manisha, an architect and interior designer with over 15 years of industry experience and based in Madhapur,
               Hyderabad, the studio works with a dedicated team of design
               professionals and engineers to deliver comprehensive architecture,
               interior design, and project management solutions.

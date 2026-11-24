@@ -34,7 +34,7 @@ export type Project = {
   slug: string
   title: string
   /** Primary label shown on project cards. */
-  category: string
+  category?: string
   /**
    * Listing filters this project belongs to.
    * When omitted, the grid matches `category` only.
@@ -91,7 +91,11 @@ export type Project = {
 
 export function projectMatchesCategory(project: Project, category: string) {
   if (category === 'All') return true
-  const tags = project.categories?.length ? project.categories : [project.category]
+  const tags = project.categories?.length
+    ? project.categories
+    : project.category
+      ? [project.category]
+      : []
   return tags.includes(category)
 }
 
@@ -192,4 +196,3 @@ export const projectCategories = [
   'Corporate Interior',
   'Hospitality',
 ] as const
-

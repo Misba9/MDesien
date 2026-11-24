@@ -8,14 +8,14 @@ import { services } from '@/lib/services'
 import { brand, siteUrl } from '@/lib/site'
 
 export const metadata: Metadata = {
-  title: 'Our Services',
+  title: 'What We Do',
   description:
-    'M Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution.',
+    'At M Desien, we bring together architecture, interior design and project management to create spaces that are thoughtfully conceived and beautifully realised. From the first idea to the final detail, we believe in balancing aesthetics, functionality and practicality to deliver spaces that are meaningful, enduring and made for the way people live and work.M Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution.',
   alternates: { canonical: '/services' },
   openGraph: {
-    title: 'Our Services | M Desien',
+    title: 'What We Do | M Desien',
     description:
-      'M Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution.',
+      'At M Desien, we bring together architecture, interior design and project management to create spaces that are thoughtfully conceived and beautifully realised. From the first idea to the final detail, we believe in balancing aesthetics, functionality and practicality to deliver spaces that are meaningful, enduring and made for the way people live and work.M Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution.',
     url: `${siteUrl}/services`,
     siteName: brand.name,
     images: ['/images/hero-home.png'],
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Our Services | M Desien',
+    title: 'What We Do | M Desien',
     description:
-      'M Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution.',
+      'At M Desien, we bring together architecture, interior design and project management to create spaces that are thoughtfully conceived and beautifully realised. From the first idea to the final detail, we believe in balancing aesthetics, functionality and practicality to deliver spaces that are meaningful, enduring and made for the way people live and work. Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution.',
     images: ['/images/hero-home.png'],
   },
 }
@@ -35,8 +35,8 @@ export default function ServicesPage() {
     <>
       <PageIntro
         eyebrow="Capabilities"
-        title="Our Services"
-        description="M Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution."
+        title="What We Do"
+        description="At M Desien, we bring together architecture, interior design and project management to create spaces that are thoughtfully conceived and beautifully realised. From the first idea to the final detail, we believe in balancing aesthetics, functionality and practicality to deliver spaces that are meaningful, enduring and made for the way people live and work.M Desien provides architecture, interior design and project management solutions with a focus on functionality, sustainability, aesthetics and practical execution."
       />
 
       <section className="mx-auto max-w-7xl px-6 pb-24 md:px-10 md:pb-36">

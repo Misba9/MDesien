@@ -55,19 +55,19 @@ const philosophyValues = [
 const experienceAreas = [
   {
     title: 'Residential Architecture & Interiors',
-    desc: 'Bespoke private villas, residences, and luxury apartments centered around the lifestyle, daylight, and functional flow of families.',
+    desc: 'Thoughtfully designed homes, bespoke villas and luxury residences that reflect the people who inhabit them. We bring together aesthetics, functionality and a keen understanding of lifestyle to create spaces that feel personal, comfortable and timeless.',
   },
   {
     title: 'Corporate Workplaces',
-    desc: 'Contemporary office environments balancing focused productivity, collaborative settings, acoustic comfort, and clean brand identity.',
+    desc: 'Workspaces designed to inspire ideas, encourage collaboration and enhance productivity. From contemporary offices to distinctive corporate environments, we create spaces that balance functionality, comfort and brand identity.',
   },
   {
     title: 'Hospitality Environments',
-    desc: 'Boutique hotels, dining venues, and retreat spaces designed to evoke memorable guest journeys and tactile atmosphere.',
+    desc: 'Distinctive hospitality spaces that leave a lasting impression. From boutique hotels and intimate dining spaces to inviting retreats, we create immersive environments where thoughtful design, ambience and attention to detail come together to enrich every experience.',
   },
   {
     title: 'Construction & Project Management',
-    desc: 'Extensive hands-on execution background, bridging design intent with contractor workflows, building codes, and timeline management.',
+    desc: 'Turning design vision into built reality through thoughtful planning and hands-on execution. With a strong foundation in construction and project coordination, we bring together design intent, technical expertise, quality craftsmanship and efficient project management to ensure every detail is delivered with care.',
   },
 ]
 
@@ -122,8 +122,9 @@ export default function AboutPage() {
 
       {/* 2. About M Desien & 3. Founder / Leadership */}
       <section className="mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-28">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
+        <div>
+          <div className="grid items-center gap-8 md:grid-cols-12">
+            <div className="md:col-span-4">
             <Reveal>
               <div className="flex flex-col items-start gap-5">
                 <Image
@@ -139,21 +140,50 @@ export default function AboutPage() {
                 </p>
               </div>
             </Reveal>
-          </div>
-          <div className="md:col-span-8">
+            </div>
+            <div className="md:col-span-8">
             <Reveal>
-              <h2 className="font-serif text-3xl font-light leading-[1.25] text-espresso text-balance md:text-4xl">
-                M Desien is an Architecture and Interior Design Studio in Madhapur.
+              <h2 className="text-balance">
+                <span className="block font-sans text-xl font-medium text-espresso md:text-2xl">
+                  M Desien
+                </span>
+                <span className="mt-3 block font-serif text-3xl font-light leading-[1.25] text-espresso md:text-4xl">
+                  Designing spaces that feel personal,
+                  <br className="hidden sm:block" /> meaningful and timeless.
+                </span>
+                <span className="mt-5 block font-sans text-sm leading-relaxed text-muted-foreground md:text-base">
+                  Architecture &amp; Interior Design Studio - Madhapur,
+                  <br className="hidden sm:block" /> Hyderabad
+                </span>
               </h2>
             </Reveal>
+            </div>
+          </div>
+          <div className="mt-10 md:mt-12">
             <Reveal delay={0.08}>
               <p className="mt-8 text-base leading-relaxed text-muted-foreground md:text-lg">
-                M Desien is led by Manisha, an architect and interior designer with over 15 years of industry experience. Based in Madhapur, Hyderabad, the studio works with a dedicated team of design professionals and engineers to deliver comprehensive architecture, interior design, and project management solutions.
+                At M Desien, we believe every space has a story to tell, and every design begins with understanding the people who will live, work and create memories in it.
               </p>
             </Reveal>
             <Reveal delay={0.12}>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-                With a strong background in construction and project coordination, Manisha bridges creative vision with rigorous on-site execution, ensuring that architectural concepts translate cleanly into built reality.
+                Founded and led by Manisha, an architect and interior designer with over 15 years of experience, M Desien is a design studio based in Madhapur, Hyderabad. What drives the studio is a genuine passion for creating spaces that are not just beautiful, but also thoughtful, functional and deeply personal.
+              </p>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+              With a strong understanding of architecture, construction and project coordination, Manisha brings together creative vision and practical experience. She believes that good design is not just about how a space looks, but also about how effortlessly it works and how it makes people feel.
+              </p>
+            </Reveal>
+             <Reveal delay={0.12}>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                Supported by a dedicated team of design professionals and engineers, M Desien takes every project from the first conversation and initial idea through design development and on-site execution, ensuring that every detail comes together as envisioned.
+
+              </p>
+            </Reveal>
+             <Reveal delay={0.12}>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
+                For us, every project is a collaboration, every space is an opportunity, and every detail matters. Our aim is simple - to create spaces that feel right, reflect the people they belong to and stand the test of time.
               </p>
             </Reveal>
           </div>
@@ -300,4 +330,3 @@ export default function AboutPage() {
     </>
   )
 }
-

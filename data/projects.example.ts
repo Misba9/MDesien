@@ -74,15 +74,17 @@ export const exampleProjects: Project[] = [
     categories: ['Residential Interior'],
     subtitle: 'Residence for Mr. Partha',
     location: 'Aparna Serene Park, Hyderabad',
+    area: '2,000 sq ft',
     year: '2026',
     status: 'Completed',
     image: sereneLivingDay,
     summary:
-      'An apartment interior for Mr. Partha, planned as a warm timber living space with a slatted screen, a family lounge, a dedicated pooja, a modular kitchen, and a master bedroom.',
+      'A thoughtfully designed apartment for Mr. Partha, featuring warm timber finishes, a welcoming family lounge, a slatted screen, a dedicated pooja space, a modular kitchen and a serene master bedroom.',
     description: [
-      'The living room is one timber composition. A full-height wall holds the television, open display, and lit shelves. A slatted screen with a display shelf divides that wall from the seating without closing the room, and the kitchen sits beyond a timber-framed opening.',
-      'The apartment includes a dedicated pooja framed by timber slats, with a carved marble arch and brass accents, a modular U-shaped kitchen in wood-grain and gloss white, and a master bedroom with fluted wall panelling, a window seat, and a floating television console.',
-      'A second lounge holds a marble television wall with lit shelves beside a glazed opening. On site, the living-room screen, the family television unit, the wardrobe carcass, and the kitchen cabinets are in carpentry. Some laminate faces are still under film.',
+      'The living room features a seamless timber composition incorporating a full-height TV unit, open display niches and illuminated shelving. A decorative slatted screen with an integrated display shelf creates a subtle division from the seating area while maintaining openness. A timber-framed opening connects the space to the kitchen.',
+      'The dedicated pooja features timber slats, a carved marble arch and brass accents. The U-shaped modular kitchen combines wood-grain finishes with gloss white cabinetry, while the master bedroom brings together fluted wall panelling, a window seat and a floating TV console.',
+      'The second lounge features a marble TV backdrop with illuminated display shelves, alongside a glazed opening.',
+      'On-site execution includes the living-room slatted screen, family lounge TV unit, wardrobe carcass and kitchen cabinetry, with carpentry progressing and some laminate surfaces still under protective film.',
     ],
     gallery: [
       {
@@ -169,9 +171,9 @@ export const exampleProjects: Project[] = [
       { label: 'Client', value: 'Mr. Partha' },
       { label: 'Project Type', value: 'Residential Interior' },
       { label: 'Scope', value: 'Interior design and execution' },
-      { label: 'Style', value: 'Contemporary' },
+      { label: 'Style', value: 'Contemporary Indian Luxury' },
       { label: 'Status', value: 'Completed' },
-      { label: 'Year', value: '2026' },
+      { label: 'Year Of Completion', value: '2025' },
     ],
     concept: {
       title: 'Design Concept',
@@ -324,15 +326,16 @@ export const exampleProjects: Project[] = [
     categories: ['Residential Interior'],
     subtitle: 'Apartment interior',
     location: 'Aparna Synergy Park, Hyderabad',
+    area: '2,200 sq ft',
     year: '2025',
     status: 'Upcoming',
     image: synergyLiving,
     summary:
-      'A warm apartment interior with an open living-dining volume, a family lounge, a modular kitchen, a dedicated pooja, study and kids rooms, guest bedrooms, and a lit master suite.',
+      'An elegant contemporary apartment encompassing an expansive open-plan living and dining area, a family lounge, a modern modular kitchen, a dedicated pooja space, bespoke study and kids rooms, guest bedrooms and a refined master suite.',
     description: [
-      'The living and dining rooms share one floor. A marble dining table sits under a crystal ring chandelier, with a timber display cabinet and a lit media wall holding the seating beyond.',
-      'The family lounge opens to the glazing with a marble television wall, timber slats, and a floating console. The kitchen is handle-less in champagne laminate with under-cabinet and toe-kick light, and a full-height fridge run.',
-      'Private rooms follow the same palette: a pooja, a study, kids bedrooms, guest bedrooms, and a master suite with a channelled headboard, glass wardrobe, and a circular backlit mirror.',
+      'The living and dining areas form a cohesive open-plan space, featuring a marble dining table beneath a statement crystal ring chandelier. A timber display cabinet and illuminated media wall define the adjoining seating area, bringing warmth and visual continuity to the space.',
+      'The family lounge opens towards the expansive glazing, with a marble TV backdrop, timber slat detailing and a floating console. The contemporary handle-less kitchen features champagne laminate finishes, integrated under-cabinet and toe-kick lighting, and a full-height refrigerator unit.',
+      'The private spaces continue the same refined design language, encompassing a dedicated pooja, study, kid\'s bedrooms and guest bedrooms. The master suite stands out with a channelled headboard, glass-fronted wardrobe and a circular backlit mirror, creating an elegant and intimate retreat.',
     ],
     gallery: [
       {
@@ -406,9 +409,9 @@ export const exampleProjects: Project[] = [
       { label: 'Location', value: 'Aparna Synergy Park, Hyderabad' },
       { label: 'Project Type', value: 'Residential Interior' },
       { label: 'Scope', value: 'Interior design and execution' },
-      { label: 'Style', value: 'Contemporary' },
+      { label: 'Style', value: 'Contemporary Modern Luxury' },
       { label: 'Status', value: 'Upcoming' },
-      { label: 'Year', value: '2025' },
+      { label: 'Year', value: '2026-27' },
     ],
     concept: {
       title: 'Design Concept',
@@ -537,20 +540,21 @@ export const exampleProjects: Project[] = [
 
   {
     slug: 'sumit-residence',
-    title: 'Sumit Residence',
+    title: 'The Sumit Residence',
     category: 'Residential Interior',
     categories: ['Residential Interior'],
     subtitle: 'Residence for Sumit',
     location: 'Private residence',
+    area: '3,000 sq ft',
     year: '2025',
     status: 'Completed',
     image: sumitLiving,
     summary:
-      'A full-home interior for Sumit, from the entrance porch through formal living, dining, kitchen, bedrooms, bathrooms, study, and a double-height volume.',
+      'A bespoke full-home interior for Mr. Sumit, spanning the entrance porch, formal living and dining areas, kitchen, bedrooms, bathrooms, study and an impressive double-height space, bringing together a cohesive design language across the home.',
     description: [
-      'The entrance porch sets a timber ceiling over stone cladding and warm lantern light. Inside, the formal living room holds cream seating, gold-toned wallpaper, and picture lights over a calm art wall.',
-      'Dining and kitchen follow in a neutral palette: a formal dining table, a picture wall, a handwash niche, and a parallel kitchen with glass display cabinets and a geometric timber screen at the end of the run.',
-      'Private rooms include the master bedroom with ensuite, kids bathroom, study and bar-cum-study, a walk-in wardrobe, and a double-height volume that opens the house vertically.',
+      'The entrance porch sets the tone with a timber ceiling, stone cladding and warm lantern lighting. The formal living room features elegant cream seating, gold-toned wallpaper and picture lighting that highlights the artwork, creating a refined and welcoming setting.',
+      'The dining and kitchen spaces continue with a cohesive neutral palette, featuring a formal dining area, curated picture wall, integrated handwash niche and a parallel kitchen with glass-fronted display cabinets. A geometric timber screen adds a distinctive architectural element to the kitchen.',
+      'The private areas encompass a master bedroom with ensuite, kid\'s bathroom, dedicated study, a versatile bar-cum-study and a walk-in wardrobe. An expansive double-height volume adds vertical openness and a striking architectural dimension to the home.',
     ],
     gallery: [
       {
@@ -675,13 +679,13 @@ export const exampleProjects: Project[] = [
       },
     ],
     facts: [
-      { label: 'Location', value: 'Private residence' },
-      { label: 'Client', value: 'Sumit' },
+      { label: 'Location', value: 'Pinjore, Haryana' },
+      { label: 'Client', value: 'Mr. sumit' },
       { label: 'Project Type', value: 'Residential Interior' },
-      { label: 'Scope', value: 'Interior design and execution' },
-      { label: 'Style', value: 'Contemporary' },
-      { label: 'Status', value: 'Completed' },
-      { label: 'Year', value: '2025' },
+      { label: 'Scope', value: 'Interiordesign and execution' },
+      { label: 'Style', value: 'Contemporary Luxury' },
+      { label: 'Status', value: 'Ongoing' },
+      { label: 'Year', value: '2026-27' },
     ],
     concept: {
       title: 'Design Concept',
@@ -800,20 +804,20 @@ export const exampleProjects: Project[] = [
 
   {
     slug: 'tdca-corporate-interior',
-    title: 'TDCA Corporate Interior',
-    category: 'Corporate Interior',
-    categories: ['Corporate Interior'],
+    title: 'TDCA Corporate office',
     subtitle: 'Tanya Dewani & Associates',
     location: 'Hyderabad',
-    year: '2025',
+    area: '1,500 sq ft',
+    year: '2024',
     status: 'Completed',
     image: tdcaReception,
     summary:
-      'A corporate office interior for Tanya Dewani & Associates and Bizpros Support Services, from the main door through reception, open workstations, cabins, conference, cafe, and service rooms.',
+      'A contemporary corporate office for Tanya Dewani & Associates and Bizpros Support Services, designed around an open-plan workspace that promotes collaboration and seamless interaction. The space brings together reception, workstations, private cabin, an open conference and a dedicated café area. A feature map wall adds a distinctive visual identity, reflecting the firms international business presence and its connections with the US shipping industry.',
     description: [
-      'The office opens on a seamless white main door with a brass name plate for Tanya Dewani & Associates. Inside, the reception wall carries both Bizpros and TDCA signage above a marble-and-gold console, with a chevron metal screen looking through to the work floor.',
-      'Open workstations sit on a pale polished floor under even downlights, with dark desk screens and a matching chevron partition. Private MD cabins are glazed rooms with frosted bands for seated privacy.',
-      'Meeting and amenity rooms complete the plan: a conference room, a cafe, a pantry washroom, and a map wall that orients visitors at the edge of the floor.',
+      'The office entrance features a seamless white main door with a custom brass nameplate for Tanya Dewani & Associates. The reception creates a strong first impression, with dual Bizpros and TDCA branding set against a feature wall, complemented by a marble-and-gold console and a distinctive chevron-patterned metal screen.',
+      'A customised world map wall at the entrance serves as a prominent feature and an interactive learning element, playing an important role during employee training sessions while reflecting the firm\'s international business operations and shipping industry connections.',
+      'The open-plan workstations are set against pale polished flooring, with dark desk screens and matching chevron partitions bringing definition and visual continuity to the workspace. Private MD cabins feature glazed enclosures with frosted bands, balancing openness with privacy.',
+      'The office is further complemented by a dedicated small conference area, café and pantry, creating a functional and welcoming environment for everyday operations and collaboration.',
     ],
     gallery: [
       {
@@ -894,9 +898,9 @@ export const exampleProjects: Project[] = [
       { label: 'Client', value: 'Tanya Dewani & Associates' },
       { label: 'Project Type', value: 'Corporate Interior' },
       { label: 'Scope', value: 'Interior design and execution' },
-      { label: 'Style', value: 'Contemporary' },
+      { label: 'Style', value: 'Contemporary Corporate | Modern Minimalist' },
       { label: 'Status', value: 'Completed' },
-      { label: 'Year', value: '2025' },
+      { label: 'Year', value: '2024' },
     ],
     concept: {
       title: 'Design Concept',
